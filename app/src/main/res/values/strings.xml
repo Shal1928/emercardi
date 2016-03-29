@@ -1,8 +1,4 @@
 <resources>
     <string name="app_name">Emercardi</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="fioTextViewString_Rus">ФИО</string>
-    <string name="fioTextViewString_Eng">Name</string>
 </resources>
