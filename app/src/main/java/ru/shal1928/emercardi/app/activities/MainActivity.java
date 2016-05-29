@@ -1,16 +1,27 @@
-package ru.shal1928.emercardi.app;
+package ru.shal1928.emercardi.app.activities;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import ru.shal1928.emercardi.app.R;
+import ru.shal1928.emercardi.app.databinding.ActivityMainBinding;
+import ru.shal1928.emercardi.app.models.UserModel;
 
 public class MainActivity extends AppCompatActivity {
+
+    ActivityMainBinding binder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ViewDataBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        UserModel user = new UserModel("Константин", "Константинович", "Константинопольский", null);
+//        binding(user);
     }
 
     @Override
