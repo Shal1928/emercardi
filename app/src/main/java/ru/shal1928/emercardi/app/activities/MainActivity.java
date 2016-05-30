@@ -19,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewDataBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binder = DataBindingUtil.setContentView(this, R.layout.activity_main);
         UserModel user = new UserModel("Константин", "Константинович", "Константинопольский", null);
-//        binding(user);
+        binder.setUser(user);
+        //        binding(user);
     }
 
     @Override
