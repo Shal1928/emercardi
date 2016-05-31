@@ -2,9 +2,11 @@
 <resources>
     <string name="app_name">Emercardi</string>
     <string name="action_settings">Settings</string>
-    <string name="personNameString">Name</string>
+    <string name="personNameString">First Name</string>
     <string name="blood_type_A">A</string>
     <string name="blood_type_AB">AB</string>
     <string name="blood_type_B">B</string>
     <string name="blood_type_O">O</string>
+    <string name="personLastNameString">Last Name</string>
+    <string name="BloodTypeString">Blood Type</string>
 </resources>

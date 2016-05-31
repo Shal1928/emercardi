@@ -2,9 +2,11 @@
 <resources>
     <string name="app_name">Emercardi</string>
     <string name="action_settings">Настройки</string>
-    <string name="personNameString">ФИО</string>
+    <string name="personNameString">Имя</string>
     <string name="blood_type_A">II</string>
     <string name="blood_type_AB">IV</string>
     <string name="blood_type_B">III</string>
     <string name="blood_type_O">I</string>
+    <string name="personLastNameString">Фамилия</string>
+    <string name="BloodTypeString">Группа крови</string>
 </resources>
