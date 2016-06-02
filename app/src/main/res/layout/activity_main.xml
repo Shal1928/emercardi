@@ -41,7 +41,8 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|center_horizontal">
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="25dp">
 
             <TextView
                     android:layout_width="wrap_content"
@@ -64,30 +65,36 @@
         <LinearLayout android:orientation="vertical"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:weightSum="1"
-                      android:layout_gravity="top|center_horizontal">
-            <RadioGroup
+                      android:layout_gravity="top|center_horizontal"
+                      android:layout_marginTop="35dp">
+            <TextView
+                    android:id="@+id/radioGroupText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/BloodTypeString"/>
+
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:text="@string/BloodTypeString">
+                    android:layout_marginTop="10dp">
                 <RadioButton android:layout_width="match_parent"
                              android:layout_height="wrap_content"
-                             android:weightSum=".5"
+                             android:layout_weight="1"
                              android:text="@string/blood_type_O" />
                 <RadioButton android:layout_width="match_parent"
                              android:layout_height="wrap_content"
-                             android:weightSum=".5"
+                             android:layout_weight="1"
                              android:text="@string/blood_type_A" />
-                <!--<RadioButton android:layout_width="match_parent"-->
-                             <!--android:layout_height="wrap_content"-->
-                             <!--android:weightSum=".2"-->
-                             <!--android:text="@string/blood_type_B" />-->
-                <!--<RadioButton android:layout_width="match_parent"-->
-                             <!--android:layout_height="wrap_content"-->
-                             <!--android:weightSum=".2"-->
-                             <!--android:text="@string/blood_type_AB" />-->
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/blood_type_B" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/blood_type_AB" />
             </RadioGroup>
         </LinearLayout>
 
