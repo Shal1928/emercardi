@@ -9,4 +9,9 @@
     <string name="blood_type_O">I</string>
     <string name="personLastNameString">Фамилия</string>
     <string name="BloodTypeString">Группа крови</string>
+    <string name="FullNameString">ФИО</string>
+    <string name="AgeString">Возраст</string>
+    <string name="HeightString">Рост</string>
+    <string name="WeightString">Вес</string>
+    <string name="DateOfBirthString">Дата рождения</string>
 </resources>

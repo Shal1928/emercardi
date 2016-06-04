@@ -14,27 +14,26 @@
                   tools:context=".activities.MainActivity">
 
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal">
 
             <TextView
+                    android:id="@+id/nameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|top|center_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/personNameString"
-                    android:id="@+id/personFirstNameTextView"/>
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/FullNameString"/>
 
             <EditText
+                    android:id="@+id/personFullNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|top|center_horizontal"
                     android:inputType="textPersonName"
-                    android:text="@{user.firstName}"
-                    android:ems="10"
-                    android:id="@+id/personFirstNameEditText" />
+                    android:text="@{user.fullName}"
+                    android:ems="10"/>
         </LinearLayout>
 
         <LinearLayout
@@ -42,24 +41,82 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="35dp">
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|top|center_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/personLastNameString"
-                    android:id="@+id/personLastNameTextView"/>
-
-            <EditText
+            <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|top|center_horizontal"
-                    android:inputType="textPersonName"
-                    android:text="@{user.lastName}"
-                    android:ems="10"
-                    android:id="@+id/personLastNameEditText" />
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_weight="0.75"
+                    android:paddingRight="15dp">
+
+                <TextView
+                        android:id="@+id/dateOfBirthText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/DateOfBirthString"/>
+
+                <EditText
+                        android:id="@+id/dateOfBirthEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|top|center_horizontal"
+                        android:inputType="textPersonName"
+                        android:text="@{user.fullName}"
+                        android:ems="10"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingRight="7.5dp">
+
+                <TextView
+                        android:id="@+id/heightText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/HeightString"/>
+
+                <EditText
+                        android:id="@+id/heightEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|top|center_horizontal"
+                        android:inputType="textPersonName"
+                        android:text="@{user.fullName}"
+                        android:ems="10"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingLeft="7.5dp">
+
+                <TextView
+                        android:id="@+id/weightOfBirthText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/WeightString"/>
+
+                <EditText
+                        android:id="@+id/weightEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|top|center_horizontal"
+                        android:inputType="textPersonName"
+                        android:text="@{user.fullName}"
+                        android:ems="10"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout android:orientation="vertical"

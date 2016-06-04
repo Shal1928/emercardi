@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class HealthModel {
 
-    private int age;
+    private int height;
     private int weight;
     private BloodModel blood;
     private List<String> diseases;
@@ -25,9 +25,9 @@ public class HealthModel {
         this.medicines = new LinkedList<String>();
     }
 
-    public HealthModel(int age, int weight, BloodModel blood, List<String> diseases, List<String> allergies,
+    public HealthModel(int height, int weight, BloodModel blood, List<String> diseases, List<String> allergies,
         List<String> medicines) {
-        this.age = age;
+        this.height = height;
         this.weight = weight;
         this.blood = blood;
         this.diseases = diseases;
@@ -37,12 +37,12 @@ public class HealthModel {
 
 
 
-    public int getAge() {
-        return age;
+    public int getHeight() {
+        return height;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getWeight() {

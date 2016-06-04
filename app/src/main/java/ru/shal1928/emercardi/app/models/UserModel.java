@@ -1,5 +1,6 @@
 package ru.shal1928.emercardi.app.models;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,9 +9,11 @@ import java.util.List;
  */
 public class UserModel {
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String fullName;
+
+    private Calendar dateOfBirth;
+
+    private int age;
 
     private HealthModel healthData;
 
@@ -22,38 +25,34 @@ public class UserModel {
         this.notificationRecipients = new LinkedList<Object>();
     }
 
-    public UserModel(String firstName, String middleName, String lastName, HealthModel healthData) {
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+    public UserModel(String fullName, Calendar dateOfBirth, HealthModel healthData) {
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        //TODO: Calculate age
         this.healthData = healthData;
         this.notificationRecipients = new LinkedList<Object>();
     }
 
 
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public Calendar getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setDateOfBirth(Calendar dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public int getAge() {
+        return age;
     }
 
     public HealthModel getHealthData() {

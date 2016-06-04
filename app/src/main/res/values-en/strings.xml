@@ -9,4 +9,9 @@
     <string name="blood_type_O">O</string>
     <string name="personLastNameString">Last Name</string>
     <string name="BloodTypeString">Blood Type</string>
+    <string name="FullNameString">Full Name</string>
+    <string name="AgeString">Age</string>
+    <string name="HeightString">Height</string>
+    <string name="WeightString">Weight</string>
+    <string name="DateOfBirthString">Date of Birth</string>
 </resources>
