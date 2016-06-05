@@ -1,6 +1,7 @@
 package ru.shal1928.emercardi.app.models;
 
 import ru.shal1928.emercardi.app.models.blood.BloodModel;
+import ru.shal1928.emercardi.app.models.medicine.Medicine;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,18 +16,18 @@ public class HealthModel {
     private BloodModel blood;
     private List<String> diseases;
     private List<String> allergies;
-    private List<String> medicines;
+    private List<Medicine> medicines;
 
 
 
     public HealthModel() {
         this.diseases = new LinkedList<String>();
         this.allergies = new LinkedList<String>();
-        this.medicines = new LinkedList<String>();
+        this.medicines = new LinkedList<Medicine>();
     }
 
     public HealthModel(int height, int weight, BloodModel blood, List<String> diseases, List<String> allergies,
-        List<String> medicines) {
+        List<Medicine> medicines) {
         this.height = height;
         this.weight = weight;
         this.blood = blood;
@@ -85,15 +86,15 @@ public class HealthModel {
         this.allergies.add(allergy);
     }
 
-    public List<String> getMedicines() {
+    public List<Medicine> getMedicines() {
         return medicines;
     }
 
-    public void setMedicines(List<String> medicines) {
+    public void setMedicines(List<Medicine> medicines) {
         this.medicines = medicines;
     }
 
-    public void addMedicine(String  medicine) {
+    public void addMedicine(Medicine  medicine) {
         this.medicines.add(medicine);
     }
 }

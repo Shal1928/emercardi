@@ -5,14 +5,15 @@ package ru.shal1928.emercardi.app.models.blood;
  */
 public class BloodModel {
 
+    public BloodModel UNKNOWN = new BloodModel(null);
     public BloodModel I = new BloodModel(BloodType.O);
     public BloodModel II = new BloodModel(BloodType.A);
     public BloodModel III = new BloodModel(BloodType.B);
     public BloodModel IV = new BloodModel(BloodType.AB);
 
     private BloodType bloodType;
-    private boolean rh;
-    private boolean kell;
+    private Boolean rh;
+    private Boolean kell;
 
 
 
@@ -22,9 +23,11 @@ public class BloodModel {
 
     public BloodModel(BloodType bloodType) {
         this.bloodType = bloodType;
+        this.rh = null;
+        this.kell = null;
     }
 
-    public BloodModel(BloodType bloodType, boolean rh, boolean kell) {
+    public BloodModel(BloodType bloodType, Boolean rh, Boolean kell) {
         this.bloodType = bloodType;
         this.rh = rh;
         this.kell = kell;
@@ -44,7 +47,7 @@ public class BloodModel {
         return rh;
     }
 
-    public void setRh(boolean rh) {
+    public void setRh(Boolean rh) {
         this.rh = rh;
     }
 
@@ -52,7 +55,7 @@ public class BloodModel {
         return kell;
     }
 
-    public void setKell(boolean kell) {
+    public void setKell(Boolean kell) {
         this.kell = kell;
     }
 }

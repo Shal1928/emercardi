@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Emercardi</string>
     <string name="action_settings">Настройки</string>
-    <string name="personNameString">Имя</string>
     <string name="blood_type_A">II</string>
     <string name="blood_type_AB">IV</string>
     <string name="blood_type_B">III</string>
     <string name="blood_type_O">I</string>
-    <string name="personLastNameString">Фамилия</string>
     <string name="BloodTypeString">Группа крови</string>
     <string name="FullNameString">ФИО</string>
     <string name="AgeString">Возраст</string>
     <string name="HeightString">Рост</string>
     <string name="WeightString">Вес</string>
     <string name="DateOfBirthString">Дата рождения</string>
+    <string name="DiseasesString">Заболевания</string>
+    <string name="AllergiesString">Аллергии</string>
+    <string name="MedicinesString">Препараты</string>
+    <string name="mgString">мг</string>
+    <string name="µgString">мкг</string>
+    <string name="mlString">мл</string>
+    <string name="PartFullString">Целая</string>
 </resources>

@@ -28,7 +28,8 @@ public class UserModel {
     public UserModel(String fullName, Calendar dateOfBirth, HealthModel healthData) {
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
-        //TODO: Calculate age
+        Calendar current = Calendar.getInstance();
+        this.age = current.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
         this.healthData = healthData;
         this.notificationRecipients = new LinkedList<Object>();
     }

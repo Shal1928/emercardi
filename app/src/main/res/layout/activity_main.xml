@@ -139,6 +139,10 @@
                 <RadioButton android:layout_width="match_parent"
                              android:layout_height="wrap_content"
                              android:layout_weight="1"
+                             android:text="@string/UnknownString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
                              android:text="@string/blood_type_O" />
                 <RadioButton android:layout_width="match_parent"
                              android:layout_height="wrap_content"
@@ -153,8 +157,87 @@
                              android:layout_weight="1"
                              android:text="@string/blood_type_AB" />
             </RadioGroup>
+
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/UnknownString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/RhTrueString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/RhFalseString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text=""
+                             android:visibility="invisible"/>
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text=""
+                             android:visibility="invisible"/>
+            </RadioGroup>
+
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/UnknownString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/KellTrueString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text="@string/KellFalseString" />
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text=""
+                             android:visibility="invisible"/>
+                <RadioButton android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:text=""
+                             android:visibility="invisible"/>
+            </RadioGroup>
         </LinearLayout>
 
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="35dp">
 
+            <TextView
+                    android:id="@+id/diseasesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/DiseasesString"/>
+
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diseasesListView"
+                    android:layout_gravity="center_horizontal"/>
+
+
+        </LinearLayout>
     </LinearLayout>
 </layout>
