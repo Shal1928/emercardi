@@ -1,9 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context=".activities.MainActivity">
+      tools:context=".activities.Main2Activity">
+
+    <item android:id="@+id/action_favorite"
+          android:icon="@drawable/ic_more_vert_black_24dp"
+          android:title="IC_MORE_VERT"
+          app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
-          android:icon="@drawable/ic_menu_black_24dp"
-          android:orderInCategory="100"/>
+          app:showAsAction="never"/>
 </menu>
