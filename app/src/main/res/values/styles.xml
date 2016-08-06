@@ -2,9 +2,13 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!--<item name="colorPrimary">@color/colorMiddle</item>-->
     </style>
-    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/colorMiddle</item>
+    </style>
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <!--<item name="colorPrimary">@color/colorMiddle</item>-->
+    </style>
 
 </resources>
