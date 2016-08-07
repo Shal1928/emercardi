@@ -3,6 +3,11 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".activities.MainActivity">
 
+    <item android:id="@+id/action_websearch"
+          android:icon="@drawable/action_search"
+          android:title="action_websearch"
+          app:showAsAction="ifRoom|withText" />
+
     <item android:id="@+id/action_more"
           android:icon="@drawable/ic_more_vert_black_24dp"
           android:title="IC_MORE_VERT"
