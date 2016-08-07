@@ -12,13 +12,7 @@
 
     <include layout="@layout/content_main"/>
 
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_dialog_email"/>
+
 
     <!--<data>-->
     <!--<variable name="user" type="ru.shal1928.emercardi.app.models.UserModel"/>-->
@@ -298,6 +292,14 @@
 
     <!--</LinearLayout>-->
 
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@android:drawable/ic_dialog_email"/>
+
     <ListView android:id="@+id/left_drawer"
               android:layout_width="240dp"
               android:layout_height="match_parent"
@@ -306,6 +308,5 @@
               android:divider="@android:color/transparent"
               android:dividerHeight="0dp"
               android:background="#111"/>
-
     <!--</LinearLayout>-->
 </android.support.v4.widget.DrawerLayout>

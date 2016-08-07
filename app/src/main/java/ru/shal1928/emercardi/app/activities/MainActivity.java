@@ -37,23 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("***1");
-
-            }
-        });
-//        toolbar.setOnMenuItemClickListener();
-//        toolbar.inflateMenu(R.menu.menu_main);
-//        Menu menu = toolbar.getMenu();
-
-
         setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        getSupportActionBar().setIcon();
-        getSupportActionBar().setElevation(15);
+        getSupportActionBar().setElevation(5);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -79,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        this, mDrawerLayout,
-//        R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
             R.string.drawer_open, R.string.drawer_close) {
 
@@ -103,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
