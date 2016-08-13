@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
     /* Called whenever we call invalidateOptionsMenu() */
     @Override

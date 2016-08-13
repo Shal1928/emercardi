@@ -5,8 +5,9 @@
 
     <item android:id="@+id/action_websearch"
           android:icon="@drawable/action_search"
-          android:title="action_websearch"
+          android:title="action_websearch_title"
           app:showAsAction="ifRoom|withText" />
+    <!--app:actionViewClass="android.support.v7.widget.SearchView"-->
 
     <item android:id="@+id/action_more"
           android:icon="@drawable/ic_more_vert_black_24dp"
