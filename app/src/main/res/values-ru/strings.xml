@@ -18,4 +18,16 @@
     <string name="µgString">мкг</string>
     <string name="mlString">мл</string>
     <string name="PartFullString">Целая</string>
+
+    <string-array name="drawer_elements_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
 </resources>

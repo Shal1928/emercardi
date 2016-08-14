@@ -18,4 +18,16 @@
     <string name="µgString">µg</string>
     <string name="mlString">ml</string>
     <string name="PartFullString">Full</string>
+
+    <string-array name="drawer_elements_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
 </resources>
