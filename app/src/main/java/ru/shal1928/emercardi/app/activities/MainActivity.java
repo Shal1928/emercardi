@@ -42,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
+
+
 
 
         mPlanetTitles = getResources().getStringArray(R.array.drawer_elements_array);
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                fab.setVisibility(View.VISIBLE);
             }
 
             /** Called when a drawer has settled in a completely open state. */
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                fab.setVisibility(View.INVISIBLE);
             }
         };
 
