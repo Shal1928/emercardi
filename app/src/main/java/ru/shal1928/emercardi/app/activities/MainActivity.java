@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-                fab.setVisibility(View.VISIBLE);
+//                fab.setVisibility(View.VISIBLE);
             }
 
             /** Called when a drawer has settled in a completely open state. */
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-                fab.setVisibility(View.INVISIBLE);
+//                fab.setVisibility(View.INVISIBLE);
             }
         };
 
