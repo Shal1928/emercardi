@@ -5,4 +5,8 @@
     <color name="colorAccent">#FD3F49</color>
     <color name="colorMiddle">#BC2F36</color>
     <color name="colorLight">#FD7279</color>
+
+    <color name="darkBlue">#05316D</color>
+    <color name="blue">#0F4FA8</color>
+    <color name="lightBlue">#4380D3</color>
 </resources>
