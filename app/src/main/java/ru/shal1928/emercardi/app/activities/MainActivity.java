@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,8 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.fragments.PlanetFragment;
@@ -34,10 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
 
-    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
-    private FloatingActionButton fab,fab1,fab2;
+    private Animation fab_open, fab_close, rotate_forward;
+    private RotateAnimation rotate_backward;
+    private FloatingActionButton fab, fab1, fab2;
+    private LinearLayout fab1_layout, fab2_layout;
     private Boolean isFabOpen = false;
 
+    private long currentAnimation;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +56,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        fab1_layout = (LinearLayout) findViewById(R.id.fab1_layout);
+        fab2_layout = (LinearLayout) findViewById(R.id.fab2_layout);
+
         fab1 = (FloatingActionButton)findViewById(R.id.fab1);
         fab2 = (FloatingActionButton)findViewById(R.id.fab2);
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
-        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        rotate_forward = new RotateAnimation(0f, 45f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        rotate_forward.setFillAfter(true);
+        rotate_forward.setFillBefore(false);
+        rotate_forward.setFillEnabled(false);
+        rotate_forward.setDuration(300);
+        rotate_forward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
+            android.R.anim.linear_interpolator));
+
+//        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
+//        rotate_forward.setFillAfter(true);
+//        rotate_forward.setFillEnabled(true);
+        rotate_backward = new RotateAnimation(45f, 0f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        rotate_backward.setFillAfter(true);
+        rotate_backward.setFillBefore(false);
+        rotate_backward.setFillEnabled(false);
+        rotate_backward.setDuration(300);
+        rotate_backward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
+            android.R.anim.linear_interpolator));
+
+//        rotate_backward.setFillBefore(true);
+//            (RotateAnimation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
+
+//        rotate_backward.setStartTime(150);
+//        rotate_backward.setFillBefore(true);
+//        rotate_backward.setFillEnabled(true);
 
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override public void onClick(View view) {
@@ -128,8 +163,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(isFabOpen){
 
             fab.startAnimation(rotate_backward);
-            fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
+            fab1_layout.startAnimation(fab_close);
+            fab2_layout.startAnimation(fab_close);
+
+//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+//                final View v = fab;
+//                fab.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        //v.clearAnimation();
+//                        v.startAnimation(rotate_backward);
+//
+//                        fab1_layout.startAnimation(fab_close);
+//                        fab2_layout.startAnimation(fab_close);
+//                    }
+//                }, 60); // не работает нормально анимация
+//            }
+//            else {
+//                //fab.clearAnimation();
+//                fab.startAnimation(rotate_backward);
+//
+//                fab1_layout.startAnimation(fab_close);
+//                fab2_layout.startAnimation(fab_close);
+//            }
+
             fab1.setClickable(false);
             fab2.setClickable(false);
             isFabOpen = false;
@@ -137,9 +194,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else {
 
-            fab.startAnimation(rotate_forward);
-            fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
+//            fab.startAnimation(rotate_forward);
+//            fab1_layout.startAnimation(fab_open);
+//            fab2_layout.startAnimation(fab_open);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                final View v = fab;
+                fab.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //v.clearAnimation();
+                        v.startAnimation(rotate_forward);
+
+                        fab1_layout.startAnimation(fab_open);
+                        fab2_layout.startAnimation(fab_open);
+                    }
+                }, 60); // не работает нормально анимация
+            }
+            else {
+                //fab.clearAnimation();
+                fab.startAnimation(rotate_forward);
+
+                fab1_layout.startAnimation(fab_open);
+                fab2_layout.startAnimation(fab_open);
+            }
+
+
+
             fab1.setClickable(true);
             fab2.setClickable(true);
             isFabOpen = true;
