@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CharSequence mTitle;
 
     private Animation fab_open, fab_close, rotate_forward;
-    private RotateAnimation rotate_backward;
+    private Animation rotate_backward;
     private FloatingActionButton fab, fab1, fab2;
     private LinearLayout fab1_layout, fab2_layout;
     private Boolean isFabOpen = false;
@@ -65,29 +65,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
-        rotate_forward = new RotateAnimation(0f, 45f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-        rotate_forward.setFillAfter(true);
-        rotate_forward.setFillBefore(false);
-        rotate_forward.setFillEnabled(false);
-        rotate_forward.setDuration(300);
-        rotate_forward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
-            android.R.anim.linear_interpolator));
+//        rotate_forward = new RotateAnimation(0f, 45f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+//            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+//        rotate_forward.setFillAfter(true);
+//        rotate_forward.setFillBefore(false);
+//        rotate_forward.setFillEnabled(false);
+//        rotate_forward.setDuration(300);
+//        rotate_forward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
+//            android.R.anim.linear_interpolator));
 
-//        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
 //        rotate_forward.setFillAfter(true);
 //        rotate_forward.setFillEnabled(true);
-        rotate_backward = new RotateAnimation(45f, 0f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-        rotate_backward.setFillAfter(true);
-        rotate_backward.setFillBefore(false);
-        rotate_backward.setFillEnabled(false);
-        rotate_backward.setDuration(300);
-        rotate_backward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
-            android.R.anim.linear_interpolator));
+//        rotate_backward = new RotateAnimation(45f, 0f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+//            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+//        rotate_backward.setFillAfter(true);
+//        rotate_backward.setFillBefore(false);
+//        rotate_backward.setFillEnabled(false);
+//        rotate_backward.setDuration(300);
+//        rotate_backward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
+//            android.R.anim.linear_interpolator));
 
-//        rotate_backward.setFillBefore(true);
-//            (RotateAnimation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.rotate_backward);
 
 //        rotate_backward.setStartTime(150);
 //        rotate_backward.setFillBefore(true);
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         fab1_layout.startAnimation(fab_open);
                         fab2_layout.startAnimation(fab_open);
                     }
-                }, 60); // не работает нормально анимация
+                }, 51); // не работает нормально анимация
             }
             else {
                 //fab.clearAnimation();
