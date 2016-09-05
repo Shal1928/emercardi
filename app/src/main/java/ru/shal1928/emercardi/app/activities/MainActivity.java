@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout fab1_layout, fab2_layout;
     private Boolean isFabOpen = false;
 
-    private long currentAnimation;
+    private Runnable runnable;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,6 +138,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+//        final View v = fab;
+        runnable = new Runnable() {
+            @Override public void run() {
+                fab.startAnimation(rotate_forward);
+
+                fab1_layout.startAnimation(fab_open);
+                fab2_layout.startAnimation(fab_open);
+            }
+        };
     }
 
     @Override public void onClick(View v) {
@@ -166,27 +176,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             fab1_layout.startAnimation(fab_close);
             fab2_layout.startAnimation(fab_close);
 
-//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-//                final View v = fab;
-//                fab.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        //v.clearAnimation();
-//                        v.startAnimation(rotate_backward);
-//
-//                        fab1_layout.startAnimation(fab_close);
-//                        fab2_layout.startAnimation(fab_close);
-//                    }
-//                }, 60); // не работает нормально анимация
-//            }
-//            else {
-//                //fab.clearAnimation();
-//                fab.startAnimation(rotate_backward);
-//
-//                fab1_layout.startAnimation(fab_close);
-//                fab2_layout.startAnimation(fab_close);
-//            }
-
             fab1.setClickable(false);
             fab2.setClickable(false);
             isFabOpen = false;
@@ -194,24 +183,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else {
 
-//            fab.startAnimation(rotate_forward);
-//            fab1_layout.startAnimation(fab_open);
-//            fab2_layout.startAnimation(fab_open);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                final View v = fab;
-                fab.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //v.clearAnimation();
-                        v.startAnimation(rotate_forward);
-
-                        fab1_layout.startAnimation(fab_open);
-                        fab2_layout.startAnimation(fab_open);
-                    }
-                }, 51); // не работает нормально анимация
+                fab.postDelayed(runnable, 51); // не работает нормально анимация
             }
             else {
-                //fab.clearAnimation();
                 fab.startAnimation(rotate_forward);
 
                 fab1_layout.startAnimation(fab_open);
