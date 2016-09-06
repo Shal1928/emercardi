@@ -20,7 +20,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
 
 //        Intent intent = getIntent();
 
-        binder = DataBindingUtil.setContentView(this, R.layout.activity_personal_info);
+        binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
+//        binder = DataBindingUtil.setContentView(this, R.layout.activity_personal_info);
         UserModel user = new UserModel("Константин Константинович Константинопольский", Calendar.getInstance(), null);
         binder.setUser(user);
 
