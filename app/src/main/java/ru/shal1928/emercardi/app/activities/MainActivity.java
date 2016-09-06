@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,39 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
-//        rotate_forward = new RotateAnimation(0f, 45f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-//            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-//        rotate_forward.setFillAfter(true);
-//        rotate_forward.setFillBefore(false);
-//        rotate_forward.setFillEnabled(false);
-//        rotate_forward.setDuration(300);
-//        rotate_forward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
-//            android.R.anim.linear_interpolator));
 
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
-//        rotate_forward.setFillAfter(true);
-//        rotate_forward.setFillEnabled(true);
-//        rotate_backward = new RotateAnimation(45f, 0f, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-//            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-//        rotate_backward.setFillAfter(true);
-//        rotate_backward.setFillBefore(false);
-//        rotate_backward.setFillEnabled(false);
-//        rotate_backward.setDuration(300);
-//        rotate_backward.setInterpolator(AnimationUtils.loadInterpolator(getApplicationContext(),
-//            android.R.anim.linear_interpolator));
-
         rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.rotate_backward);
-
-//        rotate_backward.setStartTime(150);
-//        rotate_backward.setFillBefore(true);
-//        rotate_backward.setFillEnabled(true);
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//            }
-//        });
 
         fab.setOnClickListener(this);
         fab1.setOnClickListener(this);
@@ -158,8 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 animateFAB();
                 break;
             case R.id.fab1:
-
-                Log.d("Raj", "Fab 1");
+                Intent intent = new Intent(this, PersonalInfoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.fab2:
 
