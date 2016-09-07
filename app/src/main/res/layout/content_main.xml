@@ -32,7 +32,7 @@
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:background="@color/colorLight"
+                  android:background="@color/white"
                   android:foreground="@color/darkBlue"
                   android:layout_gravity="center_vertical"
                   android:padding="2dp"
@@ -47,6 +47,8 @@
                 app:pressedTranslationZ="12dp"
                 android:src="@drawable/ic_done_white_24dp" />
     </LinearLayout>
+
+    <!--Personal Info Data-->
     <LinearLayout
             android:id="@+id/fab1_layout"
             android:layout_width="wrap_content"
@@ -55,26 +57,26 @@
             android:layout_marginBottom="90dp"
             android:layout_gravity="bottom|end"
             android:layout_marginRight="@dimen/fab_margin"
-            android:visibility="invisible"
-
-    >
+            android:visibility="invisible">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:background="@color/colorLight"
+                  android:background="@color/white"
                   android:foreground="@color/darkBlue"
                   android:layout_gravity="center_vertical"
                   android:padding="4dp"
-                  android:text="Button 1" />
+                  android:text="@string/personal_info_title" />
 
         <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:elevation="6dp"
-                app:backgroundTint="@color/lightBlue"
+                app:backgroundTint="@color/blue"
                 app:pressedTranslationZ="12dp"
-                android:src="@drawable/ic_message_white_24dp" />
+                android:src="@drawable/ic_account_circle_white_24dp" />
     </LinearLayout>
+    <!--Personal Info Data-->
+
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"

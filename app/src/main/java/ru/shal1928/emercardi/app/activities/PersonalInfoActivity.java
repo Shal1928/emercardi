@@ -1,6 +1,10 @@
 package ru.shal1928.emercardi.app.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
@@ -20,7 +24,14 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
 
-       initToolbar(R.id.toolbar, true, true);
+        initToolbar(R.id.toolbar, true, true);
+
+        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                onBackPressed();
+                Log.d("*** onClick", "onClick");
+            }
+        });
 
 //        Intent intent = getIntent();
 

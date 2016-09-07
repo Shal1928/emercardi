@@ -38,5 +38,5 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-    <string name="title_activity_personal_info">Personal Data</string>
+    <string name="personal_info_title">Personal Data</string>
 </resources>

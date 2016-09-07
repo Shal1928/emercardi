@@ -88,7 +88,6 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-//                fab.setVisibility(View.VISIBLE);
             }
 
             /** Called when a drawer has settled in a completely open state. */
@@ -96,7 +95,6 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-//                fab.setVisibility(View.INVISIBLE);
             }
         };
 
@@ -124,6 +122,10 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
             case R.id.fab1:
                 Intent intent = new Intent(this, PersonalInfoActivity.class);
                 startActivity(intent);
+                fab.clearAnimation();
+                fab1_layout.clearAnimation();
+                fab2_layout.clearAnimation();
+                isFabOpen = false;
                 break;
             case R.id.fab2:
 

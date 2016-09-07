@@ -29,6 +29,6 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-    <string name="title_activity_personal_info">Персональные данные</string>
+    <string name="personal_info_title">Персональные данные</string>
 
 </resources>
