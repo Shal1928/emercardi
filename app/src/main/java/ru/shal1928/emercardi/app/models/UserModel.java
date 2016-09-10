@@ -9,7 +9,9 @@ import java.util.List;
  */
 public class UserModel {
 
-    private String fullName;
+    private String firstName;
+
+    private String lastName;
 
     private Calendar dateOfBirth;
 
@@ -25,8 +27,9 @@ public class UserModel {
         this.notificationRecipients = new LinkedList<Object>();
     }
 
-    public UserModel(String fullName, Calendar dateOfBirth, HealthModel healthData) {
-        this.fullName = fullName;
+    public UserModel(String firstName, String lastName, Calendar dateOfBirth, HealthModel healthData) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         Calendar current = Calendar.getInstance();
         this.age = current.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
@@ -36,12 +39,20 @@ public class UserModel {
 
 
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Calendar getDateOfBirth() {

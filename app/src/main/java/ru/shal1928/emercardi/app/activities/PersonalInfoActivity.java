@@ -29,14 +29,13 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 onBackPressed();
-                Log.d("*** onClick", "onClick");
             }
         });
 
 //        Intent intent = getIntent();
 
         binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
-        UserModel user = new UserModel("Константин Константинович Константинопольский", Calendar.getInstance(), null);
+        UserModel user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
         binder.setUser(user);
     }
 }

@@ -18,116 +18,160 @@
                 android:orientation="vertical">
             <include layout="@layout/toolbar"/>
 
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|center_horizontal">
-
-                <TextView
-                        android:id="@+id/nameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/FullNameString"/>
-
-                <EditText
-                        android:id="@+id/personFullNameEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|top|center_horizontal"
-                        android:inputType="textPersonName"
-                        android:text="@{user.fullName}"
-                        android:ems="10"/>
-
-            </LinearLayout>
-
+            <!--First Name-->
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|center_horizontal"
-                    android:layout_marginTop="35dp">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_gravity="left|top"
+                    android:layout_weight="1">
 
-                <LinearLayout
-                        android:orientation="vertical"
+                <TextView
+                        android:id="@+id/firstNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_horizontal"
+                        android:layout_marginRight="4dp"
+                        android:text="@string/NameString"/>
+
+                <EditText
+                        android:id="@+id/firstNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="top|center_horizontal"
-                        android:layout_weight="0.75"
-                        android:paddingRight="15dp">
-
-                    <TextView
-                            android:id="@+id/dateOfBirthText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@string/DateOfBirthString"/>
-
-                    <EditText
-                            android:id="@+id/dateOfBirthEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|top|center_horizontal"
-                            android:inputType="textPersonName"
-                            android:text="@{user.fullName}"
-                            android:ems="10"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center_horizontal"
-                        android:layout_weight="1"
-                        android:paddingRight="7.5dp">
-
-                    <TextView
-                            android:id="@+id/heightText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@string/HeightString"/>
-
-                    <EditText
-                            android:id="@+id/heightEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|top|center_horizontal"
-                            android:inputType="numberDecimal"
-                            android:text="@{user.fullName}"
-                            android:ems="10"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center_horizontal"
-                        android:layout_weight="1"
-                        android:paddingLeft="7.5dp">
-
-                    <TextView
-                            android:id="@+id/weightOfBirthText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@string/WeightString"/>
-
-                    <EditText
-                            android:id="@+id/weightEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|top|center_horizontal"
-                            android:inputType="number"
-                            android:text="@{user.fullName}"
-                            android:ems="10"/>
-
-                </LinearLayout>
+                        android:layout_gravity="right"
+                        android:inputType="textPersonName"
+                        android:text="@{user.firstName}"
+                        android:ems="10"/>
 
             </LinearLayout>
+            <!--First Name-->
+
+            <!--Last Name-->
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_gravity="left|top"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/lastNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_horizontal"
+                        android:layout_marginRight="4dp"
+                        android:text="@string/LastNameString"/>
+
+                <EditText
+                        android:id="@+id/lastNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:inputType="textPersonName"
+                        android:text="@{user.lastName}"
+                        android:ems="10"/>
+
+            </LinearLayout>
+            <!--Last Name-->
+
+
+
+
+
+
+
+            <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="top|center_horizontal"-->
+                    <!--android:layout_marginTop="35dp">-->
+
+                <!--<LinearLayout-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="top|center_horizontal"-->
+                        <!--android:layout_weight="0.75"-->
+                        <!--android:paddingRight="15dp">-->
+
+                    <!--<TextView-->
+                            <!--android:id="@+id/dateOfBirthText"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="@string/DateOfBirthString"/>-->
+
+                    <!--<EditText-->
+                            <!--android:id="@+id/dateOfBirthEditText"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="left|top|center_horizontal"-->
+                            <!--android:inputType="textPersonName"-->
+                            <!--android:text="@{user.firstName}"-->
+                            <!--android:ems="10"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="top|center_horizontal"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:paddingRight="7.5dp">-->
+
+                    <!--<TextView-->
+                            <!--android:id="@+id/heightText"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="@string/HeightString"/>-->
+
+                    <!--<EditText-->
+                            <!--android:id="@+id/heightEditText"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="left|top|center_horizontal"-->
+                            <!--android:inputType="numberDecimal"-->
+                            <!--android:text="@{user.firstName}"-->
+                            <!--android:ems="10"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="top|center_horizontal"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:paddingLeft="7.5dp">-->
+
+                    <!--<TextView-->
+                            <!--android:id="@+id/weightOfBirthText"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="@string/WeightString"/>-->
+
+                    <!--<EditText-->
+                            <!--android:id="@+id/weightEditText"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="left|top|center_horizontal"-->
+                            <!--android:inputType="number"-->
+                            <!--android:text="@{user.firstName}"-->
+                            <!--android:ems="10"/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>
