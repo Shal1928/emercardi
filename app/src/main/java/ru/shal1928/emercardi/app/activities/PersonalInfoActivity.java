@@ -22,8 +22,13 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_info);
 
+
+        binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
+        UserModel user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
+        binder.setUser(user);
+
+        setContentView(R.layout.activity_personal_info);
         initToolbar(R.id.toolbar, true, true);
 
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
@@ -34,8 +39,6 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
 //        Intent intent = getIntent();
 
-        binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
-        UserModel user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
-        binder.setUser(user);
+
     }
 }
