@@ -18,66 +18,114 @@
                 android:orientation="vertical">
             <include layout="@layout/toolbar"/>
 
-            <!--First Name-->
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_gravity="left|top"
-                    android:layout_weight="1">
 
-                <TextView
-                        android:id="@+id/firstNameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center_horizontal"
-                        android:layout_marginRight="4dp"
-                        android:text="@string/NameString"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="top|fill_horizontal"
+                          android:orientation="horizontal">
+
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="left"
+                           android:src="@drawable/ic_account_box_black_24dp"/>
 
                 <EditText
                         android:id="@+id/firstNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
                         android:inputType="textPersonName"
+                        android:layout_gravity="bottom|fill_horizontal"
                         android:text="@{user.firstName}"
                         android:ems="10"/>
 
             </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="top|fill_horizontal"
+                      android:orientation="horizontal"
+                      android:layout_marginLeft="28dp">
+
+            <EditText
+                    android:id="@+id/lastNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="@{user.lastName}"
+                    android:ems="10"
+                    android:layout_gravity="bottom|fill_horizontal" />
+        </LinearLayout>
+
+
+
+            <!--<TableLayout android:layout_width="match_parent"-->
+                         <!--android:layout_height="match_parent"-->
+                         <!--android:layout_gravity="top|fill_horizontal"-->
+                         <!--android:layout_marginLeft="4dp"-->
+                         <!--android:layout_marginTop="4dp"-->
+                         <!--android:layout_marginRight="4dp"-->
+                         <!--android:stretchColumns="1">-->
+                <!--<TableRow>-->
+                    <!--<ImageView android:layout_width="wrap_content"-->
+                               <!--android:layout_height="wrap_content"-->
+                               <!--android:layout_gravity="left"-->
+                               <!--android:src="@drawable/ic_account_box_black_24dp"-->
+                               <!--android:layout_column="1" />-->
+
+                    <!--<EditText-->
+                            <!--android:id="@+id/firstNameEditText"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:inputType="textPersonName"-->
+                            <!--android:layout_gravity="bottom|fill_horizontal"-->
+                            <!--android:text="@{user.firstName}"-->
+                            <!--android:ems="10"-->
+                            <!--android:layout_column="2"/>-->
+                <!--</TableRow>-->
+
+                <!--<TableRow>-->
+                    <!--<EditText-->
+                            <!--android:id="@+id/lastNameEditText"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="bottom|fill_horizontal"-->
+                            <!--android:inputType="textPersonName"-->
+                            <!--android:text="@{user.lastName}"-->
+                            <!--android:ems="10"-->
+                            <!--android:layout_column="2"/>-->
+                <!--</TableRow>-->
+            <!--</TableLayout>-->
+
+            <!--First Name-->
+            <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="4dp"-->
+                    <!--android:layout_marginLeft="4dp"-->
+                    <!--android:layout_marginRight="4dp"-->
+                    <!--android:layout_gravity="left|top"-->
+                    <!--android:layout_weight="1">-->
+
+                <!---->
+
+            <!--</LinearLayout>-->
             <!--First Name-->
 
             <!--Last Name-->
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_gravity="left|top"
-                    android:layout_weight="1">
+            <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="4dp"-->
+                    <!--android:layout_marginLeft="4dp"-->
+                    <!--android:layout_marginRight="4dp"-->
+                    <!--android:layout_gravity="left|top"-->
+                    <!--android:layout_weight="1">-->
 
-                <TextView
-                        android:id="@+id/lastNameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center_horizontal"
-                        android:layout_marginRight="4dp"
-                        android:text="@string/LastNameString"/>
+                <!---->
 
-                <EditText
-                        android:id="@+id/lastNameEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:inputType="textPersonName"
-                        android:text="@{user.lastName}"
-                        android:ems="10"/>
-
-            </LinearLayout>
+            <!--</LinearLayout>-->
             <!--Last Name-->
 
 
