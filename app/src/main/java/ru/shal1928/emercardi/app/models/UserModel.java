@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.SimpleTimeZone;
 
 /**
  * Created by shal1928 on 29.05.2016.
@@ -167,3 +166,25 @@ public class UserModel extends BaseObservable {
         return dateOfBirthWatcher;
     }
 }
+
+
+//public class UnixDateConverter {
+//    public static String convert(long timestamp) {
+//        Calendar mydate = Calendar.getInstance();
+//        mydate.setTimeInMillis(timestamp * 1000);
+//        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+//        return sdf.format(mydate.getTime());
+//    }
+//}
+//
+//
+//    Импортируем его в разметку:
+//
+//
+//<import type="com.georgeci.bindingssample.UnixDateConverter"/>
+//        ...
+//<TextView
+//   android:id="@+id/birthday"
+//           android:layout_width="wrap_content"
+//           android:layout_height="wrap_content"
+//           android:text="@{UnixDateConverter.convert(user.birthday)}"/>
