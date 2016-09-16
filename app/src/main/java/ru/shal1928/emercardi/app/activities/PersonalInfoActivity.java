@@ -1,9 +1,7 @@
 package ru.shal1928.emercardi.app.activities;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
@@ -24,11 +22,12 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
+//        binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
+        binder = (ActivityPersonalInfoBinding)DataBindingUtil.setContentView(this, R.layout.activity_personal_info);
         UserModel user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
         binder.setUser(user);
 
-        setContentView(R.layout.activity_personal_info);
+//        setContentView(R.layout.activity_personal_info);
         initToolbar(R.id.toolbar, true, true);
 
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
