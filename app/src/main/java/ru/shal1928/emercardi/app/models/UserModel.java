@@ -1,13 +1,8 @@
 package ru.shal1928.emercardi.app.models;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import ru.shal1928.emercardi.app.BR;
+import android.databinding.ObservableField;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,154 +12,99 @@ import java.util.List;
  */
 public class UserModel extends BaseObservable {
 
-    private String firstName;
+    public final ObservableField<String> firstName = new ObservableField<String>();
 
-    private String lastName;
+    public final ObservableField<String> lastName = new ObservableField<String>();
 
-    private Calendar dateOfBirth;
+    public final ObservableField<Calendar> dateOfBirth = new ObservableField<Calendar>();
 
-    private int age;
+    public final ObservableField<Integer> age = new ObservableField<Integer>();
 
-    private HealthModel healthData;
+    public final ObservableField<HealthModel> healthData = new ObservableField<HealthModel>();
 
-    private List<Object> notificationRecipients;
+    public final ObservableField<List<Object>> notificationRecipients = new ObservableField<List<Object>>();
 
 
 
     public UserModel() {
-        this.notificationRecipients = new LinkedList<Object>();
+        //
     }
 
     public UserModel(String firstName, String lastName, Calendar dateOfBirth, HealthModel healthData) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.firstName.set(firstName);
+        this.lastName.set(lastName);
+        this.dateOfBirth.set(dateOfBirth);
         Calendar current = Calendar.getInstance();
-        this.age = current.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
-        this.healthData = healthData;
-        this.notificationRecipients = new LinkedList<Object>();
+        this.age.set(current.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR));
+        this.healthData.set(healthData);
+        this.notificationRecipients.set(new LinkedList<Object>());
     }
 
 
 
-    @Bindable public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-        notifyPropertyChanged(BR.firstName);
-    }
-
-    @Bindable public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-        notifyPropertyChanged(BR.lastName);
-    }
-
-    @Bindable public Calendar getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Calendar dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-        notifyPropertyChanged(BR.dateOfBirth);
-    }
-
-    @Bindable public int getAge() {
-        return age;
-    }
-
-    @Bindable public HealthModel getHealthData() {
-        return healthData;
-    }
-
-    public void setHealthData(HealthModel healthData) {
-        this.healthData = healthData;
-        notifyPropertyChanged(BR.healthData);
-    }
-
-    @Bindable public List<Object> getNotificationRecipients() {
-        return notificationRecipients;
-    }
-
-    public void setNotificationRecipients(List<Object> notificationRecipients) {
-        this.notificationRecipients = notificationRecipients;
-        notifyPropertyChanged(BR.notificationRecipients);
-    }
-
-    public void addNotificationRecipient(Object notificationRecipient) {
-        this.notificationRecipients.add(notificationRecipient);
-    }
-
-
-
-    private TextWatcher firstNameWatcher = new TextWatcher() {
-
-        public void afterTextChanged(Editable s) {
-        }
-
-        public void beforeTextChanged(CharSequence s, int start,
-                int count, int after) {
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Important! Use the property setter, otherwhise the model won't be informed about the change.
-            setFirstName(String.valueOf(s));
-        }
-    };
-    // Textwatcher Reference: http://developer.android.com/reference/android/text/TextWatcher.html
-    public TextWatcher getFirstNameWatcher() {
-        return firstNameWatcher;
-    }
-
-    private TextWatcher lastNameWatcher = new TextWatcher() {
-
-        public void afterTextChanged(Editable s) {
-        }
-
-        public void beforeTextChanged(CharSequence s, int start,
-                int count, int after) {
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Important! Use the property setter, otherwhise the model won't be informed about the change.
-            setLastName(String.valueOf(s));
-        }
-    };
-
-    public TextWatcher getLastNameWatcher() {
-        return lastNameWatcher;
-    }
-
-    private TextWatcher dateOfBirthWatcher = new TextWatcher() {
-
-        public void afterTextChanged(Editable s) {
-        }
-
-        public void beforeTextChanged(CharSequence s, int start,
-                int count, int after) {
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Important! Use the property setter, otherwhise the model won't be informed about the change.
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat format = new SimpleDateFormat();
-            try {
-                calendar.setTime(format.parse(String.valueOf(s)));
-                setDateOfBirth(calendar);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
-    public TextWatcher getDateOfBirthWatcher() {
-        return dateOfBirthWatcher;
-    }
+//    private TextWatcher firstNameWatcher = new TextWatcher() {
+//
+//        public void afterTextChanged(Editable s) {
+//        }
+//
+//        public void beforeTextChanged(CharSequence s, int start,
+//                int count, int after) {
+//        }
+//
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            // Important! Use the property setter, otherwhise the model won't be informed about the change.
+//            setFirstName(String.valueOf(s));
+//        }
+//    };
+//    // Textwatcher Reference: http://developer.android.com/reference/android/text/TextWatcher.html
+//    public TextWatcher getFirstNameWatcher() {
+//        return firstNameWatcher;
+//    }
+//
+//    private TextWatcher lastNameWatcher = new TextWatcher() {
+//
+//        public void afterTextChanged(Editable s) {
+//        }
+//
+//        public void beforeTextChanged(CharSequence s, int start,
+//                int count, int after) {
+//        }
+//
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            // Important! Use the property setter, otherwhise the model won't be informed about the change.
+//            setLastName(String.valueOf(s));
+//        }
+//    };
+//
+//    public TextWatcher getLastNameWatcher() {
+//        return lastNameWatcher;
+//    }
+//
+//    private TextWatcher dateOfBirthWatcher = new TextWatcher() {
+//
+//        public void afterTextChanged(Editable s) {
+//        }
+//
+//        public void beforeTextChanged(CharSequence s, int start,
+//                int count, int after) {
+//        }
+//
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            // Important! Use the property setter, otherwhise the model won't be informed about the change.
+//            Calendar calendar = Calendar.getInstance();
+//            SimpleDateFormat format = new SimpleDateFormat();
+//            try {
+//                calendar.setTime(format.parse(String.valueOf(s)));
+//                setDateOfBirth(calendar);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    };
+//
+//    public TextWatcher getDateOfBirthWatcher() {
+//        return dateOfBirthWatcher;
+//    }
 }
 
 

@@ -24,10 +24,9 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
 //        binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
         binder = (ActivityPersonalInfoBinding)DataBindingUtil.setContentView(this, R.layout.activity_personal_info);
-        UserModel user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
-        binder.setUser(user);
+//get Parseable
+//        binder.setUser(user);
 
-//        setContentView(R.layout.activity_personal_info);
         initToolbar(R.id.toolbar, true, true);
 
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {

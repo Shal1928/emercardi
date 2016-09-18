@@ -22,8 +22,13 @@ import android.widget.ListView;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.fragments.PlanetFragment;
+import ru.shal1928.emercardi.app.models.UserModel;
+
+import java.util.Calendar;
 
 public class MainActivity extends ExtAppCompatActivity implements View.OnClickListener {
+
+    static final int PICK_CONTACT_REQUEST = 0;
 
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
@@ -40,6 +45,8 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
 
     private Runnable runnable;
 
+    private UserModel user;
+
     public MainActivity() {
         super(R.menu.menu_main);
     }
@@ -48,6 +55,8 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initToolbar(R.id.toolbar, true, true);
+
+        this.user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
 
         fab1_layout = (LinearLayout) findViewById(R.id.fab1_layout);
         fab2_layout = (LinearLayout) findViewById(R.id.fab2_layout);
@@ -121,7 +130,12 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
                 break;
             case R.id.fab1:
                 Intent intent = new Intent(this, PersonalInfoActivity.class);
-                startActivity(intent);
+//                intent.putExtra("User", user);
+//                Use Parseable
+//                startActivity(intent);
+                startActivityForResult(intent, PICK_CONTACT_REQUEST);
+
+
                 fab.clearAnimation();
                 fab1_layout.clearAnimation();
                 fab2_layout.clearAnimation();
@@ -170,29 +184,25 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
     }
 
     /* Called whenever we call invalidateOptionsMenu() */
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    @Override public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
+    @Override protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    @Override public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -229,9 +239,16 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
-    @Override
-    public void setTitle(CharSequence title) {
+    @Override public void setTitle(CharSequence title) {
         mTitle = title;
         getSupportActionBar().setTitle(mTitle);
+    }
+
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PICK_CONTACT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                startActivity(new Intent(data));
+            }
+        }
     }
 }
