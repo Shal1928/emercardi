@@ -29,7 +29,7 @@ import java.util.Calendar;
 
 public class MainActivity extends ExtAppCompatActivity implements View.OnClickListener {
 
-    static final int PICK_CONTACT_REQUEST = 0;
+    static final int PERSONAL_INFO_REQUEST = 0;
 
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
@@ -135,7 +135,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
 //                Use Parseable
 //                startActivity(intent);
                 IntentAdapter.setPersonalInfoToIntent(intent, this.user);
-                startActivityForResult(intent, PICK_CONTACT_REQUEST);
+                startActivityForResult(intent, PERSONAL_INFO_REQUEST);
 
 
                 fab.clearAnimation();
@@ -247,10 +247,13 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
     }
 
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PICK_CONTACT_REQUEST) {
+        if (requestCode == PERSONAL_INFO_REQUEST) {
             if (resultCode == RESULT_OK) {
-                startActivity(new Intent(data));
+//                startActivity(new Intent(data));
+                IntentAdapter.setPersonalInfoToModel(data, this.user);
             }
         }
+
+        Log.d("USER: ", this.user.firstName.get() + " " + this.user.lastName.get());
     }
 }
