@@ -22,6 +22,7 @@ import android.widget.ListView;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.fragments.PlanetFragment;
+import ru.shal1928.emercardi.app.helpers.IntentAdapter;
 import ru.shal1928.emercardi.app.models.UserModel;
 
 import java.util.Calendar;
@@ -133,6 +134,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
 //                intent.putExtra("User", user);
 //                Use Parseable
 //                startActivity(intent);
+                IntentAdapter.setPersonalInfoToIntent(intent, this.user);
                 startActivityForResult(intent, PICK_CONTACT_REQUEST);
 
 
