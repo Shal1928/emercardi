@@ -10,6 +10,7 @@ import android.view.View;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
+import ru.shal1928.emercardi.app.helpers.TextWatcherAdvanced;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
 import java.text.ParseException;
@@ -27,6 +28,7 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
     public final ObservableField<Calendar> dateOfBirth = new ObservableField<Calendar>();
     //endregion
 
+    private boolean isInNotification = false;
 
     public PersonalInfoActivity() {
         super(R.menu.menu_sub);
@@ -73,19 +75,10 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
 
     //region Watcher
-    private TextWatcher firstNameWatcher = new TextWatcher() {
+    private TextWatcher firstNameWatcher = new TextWatcherAdvanced() {
 
-        public void afterTextChanged(Editable s) {
-            //
-        }
-
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            //
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Important! Use the property setter, otherwhise the model won't be informed about the change.
-            firstName.set(String.valueOf(s));
+        @Override public void onTextChanged(String newValue) {
+            firstName.set(newValue);
         }
     };
 

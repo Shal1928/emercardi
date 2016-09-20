@@ -50,13 +50,14 @@
                           android:orientation="horizontal"
                           android:layout_marginLeft="8dp">
 
+                <!--app:addTextChangedListener="@{personalInfo.lastNameWatcher}"-->
                 <EditText
                         android:id="@+id/lastNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:text="@{personalInfo.lastName}"
-                        app:addTextChangedListener="@{personalInfo.lastNameWatcher}"
+
                         android:ems="10"
                         android:layout_gravity="bottom|fill_horizontal"
                         android:layout_marginLeft="36dp"/>
