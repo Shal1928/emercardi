@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="user" type="ru.shal1928.emercardi.app.models.UserModel"/>
+        <variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -37,8 +37,8 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:layout_gravity="top|fill_horizontal"
-                        android:text="@{user.firstName}"
-                        app:addTextChangedListener="@{user.firstNameWatcher}"
+                        android:text="@{personalInfo.firstName}"
+                        app:addTextChangedListener="@{personalInfo.firstNameWatcher}"
                         android:ems="10"
                         android:layout_marginLeft="8dp"/>
 
@@ -55,8 +55,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:text="@{user.lastName}"
-                        app:addTextChangedListener="@{user.lastNameWatcher}"
+                        android:text="@{personalInfo.lastName}"
+                        app:addTextChangedListener="@{personalInfo.lastNameWatcher}"
                         android:ems="10"
                         android:layout_gravity="bottom|fill_horizontal"
                         android:layout_marginLeft="36dp"/>
