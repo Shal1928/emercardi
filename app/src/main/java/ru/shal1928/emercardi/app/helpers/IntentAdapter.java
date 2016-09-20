@@ -24,10 +24,4 @@ public class IntentAdapter {
         intent.putExtra(UserModelProperties.LAST_NAME, userModel.lastName.get());
         intent.putExtra(UserModelProperties.BIRTH_DATE, userModel.dateOfBirth.get().getTimeInMillis());
     }
-
-    public static UserModel getPersonalInfo(Intent intent) {
-        UserModel userModel = new UserModel();
-        setPersonalInfoToModel(intent, userModel);
-        return userModel;
-    }
 }

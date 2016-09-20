@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>
+        <!--<variable name="handler" type="FocusChangeHandler"/>-->
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -38,7 +39,6 @@
                         android:inputType="textPersonName"
                         android:layout_gravity="top|fill_horizontal"
                         android:text="@{personalInfo.firstName}"
-                        app:addTextChangedListener="@{personalInfo.firstNameWatcher}"
                         android:ems="10"
                         android:layout_marginLeft="8dp"/>
 

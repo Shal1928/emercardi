@@ -1,20 +1,18 @@
 package ru.shal1928.emercardi.app.activities;
 
 import android.content.Intent;
+import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
-import ru.shal1928.emercardi.app.helpers.TextWatcherAdvanced;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class PersonalInfoActivity extends ExtAppCompatActivity {
@@ -53,6 +51,20 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
                 onBackPressed();
             }
         });
+
+        EditText editText = (EditText) findViewById(R.id.firstNameEditText);
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override public void onFocusChange(View v, boolean hasFocus) {
+
+                if(hasFocus) return;
+
+                EditText vText = (EditText) v;
+
+                if (!vText.getText().toString().equals(firstName.get())) {
+                    firstName.set(vText.getText().toString());
+                }
+            }
+        });
     }
 
     private void inflateData() {
@@ -73,64 +85,23 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
     }
 
 
+    @BindingAdapter({"app:binding"})
+    public static void bindEditText(EditText view, final String bindableString) {
 
-    //region Watcher
-    private TextWatcher firstNameWatcher = new TextWatcherAdvanced() {
-
-        @Override public void onTextChanged(String newValue) {
-            firstName.set(newValue);
-        }
-    };
-
-    public TextWatcher getFirstNameWatcher() {
-        return firstNameWatcher;
+        Log.d("binding:", "binding");
+//        Pair<BindableString, TextWatcherAdvanced> pair = (Pair) view.getTag(R.id.bound_observable);
+//        if (pair == null || pair.first != bindableString) {
+//            if (pair != null) {
+//                view.removeTextChangedListener(pair.second);
+//            }
+//
+//            TextWatcherAdvanced watcher = new TextWatcherAdvanced(bindableString);
+//            view.setTag(R.id.bound_observable, new Pair<BindableString, TextWatcherAdvanced>(bindableString, watcher));
+//            view.addTextChangedListener(watcher);
+//        }
+//        String newValue = bindableString.get();
+//        if (!view.getText().toString().equals(newValue)) {
+//            view.setText(newValue);
+//        }
     }
-
-    private TextWatcher lastNameWatcher = new TextWatcher() {
-
-        public void afterTextChanged(Editable s) {
-            //
-        }
-
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            //
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Important! Use the property setter, otherwhise the model won't be informed about the change.
-            lastName.set(String.valueOf(s));
-        }
-    };
-
-    public TextWatcher getLastNameWatcher() {
-        return lastNameWatcher;
-    }
-
-    private TextWatcher dateOfBirthWatcher = new TextWatcher() {
-
-        public void afterTextChanged(Editable s) {
-            //
-        }
-
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            //
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Important! Use the property setter, otherwhise the model won't be informed about the change.
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat format = new SimpleDateFormat();
-            try {
-                calendar.setTime(format.parse(String.valueOf(s)));
-                dateOfBirth.set(calendar);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
-    public TextWatcher getDateOfBirthWatcher() {
-        return dateOfBirthWatcher;
-    }
-    //endregion
 }

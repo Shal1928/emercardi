@@ -249,7 +249,6 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERSONAL_INFO_REQUEST) {
             if (resultCode == RESULT_OK) {
-//                startActivity(new Intent(data));
                 IntentAdapter.setPersonalInfoToModel(data, this.user);
             }
         }
