@@ -4,4 +4,8 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".activities.PersonalInfoActivity">
 
+    <item android:id="@+id/action_done"
+          android:icon="@drawable/ic_done_white_24dp"
+          android:title="@string/DoneString"
+          app:showAsAction="always" />
 </menu>

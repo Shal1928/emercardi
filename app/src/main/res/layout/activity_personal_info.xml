@@ -50,17 +50,15 @@
                           android:orientation="horizontal"
                           android:layout_marginLeft="8dp">
 
-                <!--app:addTextChangedListener="@{personalInfo.lastNameWatcher}"-->
                 <EditText
                         android:id="@+id/lastNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:text="@{personalInfo.lastName}"
-
                         android:ems="10"
                         android:layout_gravity="bottom|fill_horizontal"
-                        android:layout_marginLeft="36dp"/>
+                        android:layout_marginLeft="32dp"/>
             </LinearLayout>
             <!--Name Part-->
 
@@ -80,17 +78,18 @@
                            android:layout_marginTop="10dp"
                            android:src="@drawable/ic_cake_black_24dp"/>
 
+                <!--android:text="@{personalInfo.dateOfBirth}"-->
                 <EditText
                         android:id="@+id/dateOfBirthText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="date"
+
                         android:layout_gravity="top|left"
                         android:layout_marginLeft="8dp"
                         android:ems="10"/>
 
             </LinearLayout>
-
 
 
             <!--<LinearLayout-->

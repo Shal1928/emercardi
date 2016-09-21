@@ -32,5 +32,6 @@
     <string name="personal_info_title">Персональные данные</string>
     <string name="NameString">Имя</string>
     <string name="LastNameString">Фамилия</string>
+    <string name="DoneString">Готово</string>
 
 </resources>

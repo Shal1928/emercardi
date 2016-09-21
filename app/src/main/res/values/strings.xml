@@ -41,4 +41,5 @@
     <string name="personal_info_title">Personal Data</string>
     <string name="NameString">Name</string>
     <string name="LastNameString">Last Name</string>
+    <string name="DoneString">Done</string>
 </resources>

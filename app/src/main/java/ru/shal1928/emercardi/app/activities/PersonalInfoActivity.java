@@ -6,11 +6,14 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
+import ru.shal1928.emercardi.app.helpers.BinderHelper;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
 import java.util.Calendar;
@@ -19,6 +22,8 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
     ActivityPersonalInfoBinding binder;
 //    private UserModel personalInfo;
+
+    private BinderHelper binderHelper = new BinderHelper(this);
 
     //region Observable Fields
     public final ObservableField<String> firstName = new ObservableField<String>();
@@ -45,26 +50,33 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
         initToolbar(R.id.toolbar, true, true);
 
+        binderHelper.bindWithEditText(R.id.firstNameEditText, firstName);
+        binderHelper.bindWithEditText(R.id.lastNameEditText, lastName);
+
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                inflateResult();
+//                getCurrentFocus().requestFocus();
+//                getToolbar().requestFocus();
                 onBackPressed();
             }
         });
 
-        EditText editText = (EditText) findViewById(R.id.firstNameEditText);
-        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override public void onFocusChange(View v, boolean hasFocus) {
 
-                if(hasFocus) return;
 
-                EditText vText = (EditText) v;
-
-                if (!vText.getText().toString().equals(firstName.get())) {
-                    firstName.set(vText.getText().toString());
-                }
-            }
-        });
+//        EditText editText = (EditText) findViewById();
+//        BinderHelper binderHelper = new
+//        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override public void onFocusChange(View v, boolean hasFocus) {
+//
+//                if(hasFocus) return;
+//
+//                EditText vText = (EditText) v;
+//
+//                if (!vText.getText().toString().equals(firstName.get())) {
+//                    firstName.set(vText.getText().toString());
+//                }
+//            }
+//        });
     }
 
     private void inflateData() {
@@ -84,6 +96,21 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         setResult(RESULT_OK, result);
     }
 
+    @Override public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                inflateResult();
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @BindingAdapter({"app:binding"})
     public static void bindEditText(EditText view, final String bindableString) {
