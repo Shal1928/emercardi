@@ -5,6 +5,7 @@
     <data>
         <variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>
         <!--<variable name="handler" type="FocusChangeHandler"/>-->
+        <!--<import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />-->
     </data>
 
     <android.support.design.widget.CoordinatorLayout

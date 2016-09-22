@@ -1,11 +1,10 @@
 package ru.shal1928.emercardi.app.activities;
 
-import android.content.Context;
 import android.content.Intent;
+import android.databinding.BindingConversion;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,8 +13,9 @@ import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
+import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.zip.Inflater;
+import java.util.Locale;
 
 
 public class PersonalInfoActivity extends ExtAppCompatActivity {
@@ -27,6 +27,8 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
     public final ObservableField<String> lastName = new ObservableField<String>();
     public final ObservableField<Calendar> dateOfBirth = new ObservableField<Calendar>();
     //endregion
+
+    private static final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
 
     public PersonalInfoActivity() {
         super(R.menu.menu_sub);
@@ -81,4 +83,24 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @BindingConversion
+    public static String calendarToString(Calendar calendar) {
+        return dateFormat.format(calendar.getTime());
+    }
+
+//    @BindingConversion
+//    public static Calendar stringToCalendar(String d) {
+//        Date date;
+//        try {
+//            date = dateFormat.parse(d);
+//        } catch (ParseException e) {
+//            return null;
+//        }
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//
+//        return calendar;
+//    }
 }
