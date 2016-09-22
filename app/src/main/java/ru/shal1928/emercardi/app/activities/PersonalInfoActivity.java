@@ -1,9 +1,11 @@
 package ru.shal1928.emercardi.app.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,7 @@ import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
 import java.util.Calendar;
+import java.util.zip.Inflater;
 
 
 public class PersonalInfoActivity extends ExtAppCompatActivity {
@@ -31,8 +34,6 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        this.binder = ActivityPersonalInfoBinding.inflate(getLayoutInflater());
-//        setContentView(R.layout.activity_personal_info);
         inflateData();
 
         this.binder = (ActivityPersonalInfoBinding) DataBindingUtil.setContentView(this,
