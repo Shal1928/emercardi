@@ -51,7 +51,6 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
     private void inflateData() {
         Intent intent = getIntent();
         this.firstName.set(intent.getStringExtra(UserModelProperties.FIRST_NAME));
-//        setFirstName(intent.getStringExtra(UserModelProperties.FIRST_NAME));
         this.lastName.set(intent.getStringExtra(UserModelProperties.LAST_NAME));
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
