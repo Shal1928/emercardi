@@ -15,6 +15,7 @@ public class StringCalendarConverter {
     private static final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, getDefault());
 
     public static String convertToString(Calendar calendar) {
+        if(calendar == null) return "";
         return dateFormat.format(calendar.getTime());
     }
 

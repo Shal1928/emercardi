@@ -1,7 +1,6 @@
 package ru.shal1928.emercardi.app.activities;
 
 import android.content.Intent;
-import android.databinding.BindingConversion;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
@@ -40,6 +39,7 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
         this.binder = (ActivityPersonalInfoBinding) DataBindingUtil.setContentView(this,
                 R.layout.activity_personal_info);
+        this.binder.setPersonalInfo(this);
 
         initToolbar(R.id.toolbar, true, true);
 
@@ -83,24 +83,4 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    @BindingConversion
-    public static String calendarToString(Calendar calendar) {
-        return dateFormat.format(calendar.getTime());
-    }
-
-//    @BindingConversion
-//    public static Calendar stringToCalendar(String d) {
-//        Date date;
-//        try {
-//            date = dateFormat.parse(d);
-//        } catch (ParseException e) {
-//            return null;
-//        }
-//
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(date);
-//
-//        return calendar;
-//    }
 }
