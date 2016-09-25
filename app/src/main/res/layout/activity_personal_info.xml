@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>
-        <import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />
+        <!--<import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />-->
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -80,13 +80,13 @@
                            android:src="@drawable/ic_cake_black_24dp"/>
 
                 <!--suppress AndroidDomInspection -->
-                <!--android:text="@={personalInfo.dateOfBirth}"-->
+                <!--android:text="@{StringCalendarConverter.convertToString(personalInfo.dateOfBirth)}"-->
                 <EditText
                         android:id="@+id/dateOfBirthText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="date"
-                        android:text="@{StringCalendarConverter.convertToString(personalInfo.dateOfBirth)}"
+                        android:text="@={personalInfo.dateOfBirth}"
                         android:layout_gravity="top|left"
                         android:layout_marginLeft="8dp"
                         android:ems="10"/>

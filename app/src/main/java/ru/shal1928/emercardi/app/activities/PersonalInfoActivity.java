@@ -1,20 +1,27 @@
 package ru.shal1928.emercardi.app.activities;
 
 import android.content.Intent;
+import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
+import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+
+import static java.util.Locale.getDefault;
 
 
 public class PersonalInfoActivity extends ExtAppCompatActivity {
@@ -82,5 +89,27 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @BindingAdapter("android:text")
+    public static void setText(TextView view, Calendar value) {
+        if (value != null) {
+            view.setText(dateFormat.format(value.getTime()));
+        }
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static Calendar getText(TextView view) {
+        Date date;
+        try {
+            date = dateFormat.parse(view.getText().toString());
+        } catch (ParseException e) {
+            return null;
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        return calendar;
     }
 }
