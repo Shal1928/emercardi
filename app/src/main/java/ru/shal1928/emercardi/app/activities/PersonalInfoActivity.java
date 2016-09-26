@@ -1,16 +1,25 @@
 package ru.shal1928.emercardi.app.activities;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableField;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import ru.shal1928.emercardi.app.R;
+import ru.shal1928.emercardi.app.activities.dialogs.DatePickerFragment;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
@@ -91,25 +100,60 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         }
     }
 
-    @BindingAdapter("android:text")
-    public static void setText(TextView view, Calendar value) {
-        if (value != null) {
-            view.setText(dateFormat.format(value.getTime()));
-        }
+//    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+//
+//        private EditText editText = (EditText) getActivity().findViewById(R.id.dateOfBirthText);
+//
+//        @Override
+//        public Dialog onCreateDialog(Bundle savedInstanceState) {
+//            Date date;
+//            try {
+//                date = dateFormat.parse(editText.getText().toString());
+//            } catch (ParseException e) {
+//                Log.e("DatePickerFragment", "Can't parse date from string!", e);
+//                return null;
+//            }
+//
+//            Calendar c = Calendar.getInstance();
+//            c.setTime(date);
+//
+//            // Create a new instance of TimePickerDialog and return it
+//            return new DatePickerDialog(getActivity(), this,
+//                    c.get(Calendar.YEAR), c.get(Calendar.MONTH) - 1, c.get(Calendar.DAY_OF_MONTH));
+//        }
+//
+//        @Override public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//            final Calendar c = Calendar.getInstance();
+//            c.set(year, monthOfYear, dayOfMonth);
+//            editText.setText(dateFormat.format(c.getTime()));
+//        }
+//    }
+
+    public void showDatePickerDialog(View v) {
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.init(R.id.dateOfBirthText);
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    @InverseBindingAdapter(attribute = "android:text")
-    public static Calendar getText(TextView view) {
-        Date date;
-        try {
-            date = dateFormat.parse(view.getText().toString());
-        } catch (ParseException e) {
-            return null;
-        }
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        return calendar;
-    }
+//    @BindingAdapter("android:text")
+//    public static void setText(TextView view, Calendar value) {
+//        if (value != null) {
+//            view.setText(dateFormat.format(value.getTime()));
+//        }
+//    }
+//
+//    @InverseBindingAdapter(attribute = "android:text")
+//    public static Calendar getText(TextView view) {
+//        Date date;
+//        try {
+//            date = dateFormat.parse(view.getText().toString());
+//        } catch (ParseException e) {
+//            return null;
+//        }
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//
+//        return calendar;
+//    }
 }
