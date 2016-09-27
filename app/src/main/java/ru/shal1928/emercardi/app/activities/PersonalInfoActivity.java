@@ -131,7 +131,7 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.init(R.id.dateOfBirthText);
+        newFragment.init(this, R.id.dateOfBirthText, dateOfBirth.get().getTime());
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 

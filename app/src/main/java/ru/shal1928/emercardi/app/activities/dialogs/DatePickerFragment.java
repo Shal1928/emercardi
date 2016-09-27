@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,26 +22,27 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     private static final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
     private EditText editText;
+    private FragmentActivity activity;
+    private Date value;
 
-    public void init(int editTextId) {
-        this.editText = (EditText) getActivity().findViewById(editTextId);
+    public void init(FragmentActivity activity, int editTextId, Date value) {
+        this.activity = activity;
+        this.editText = (EditText) activity.findViewById(editTextId);
+        this.value = value;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Date date;
         try {
-            date = dateFormat.parse(editText.getText().toString());
+            value = dateFormat.parse(editText.getText().toString());
         } catch (ParseException e) {
-            Log.e("DatePickerFragment", "Can't parse date from string!", e);
-            return null;
+            if(value == null) throw new RuntimeException("Can't parse date from string!", e);
         }
 
         Calendar c = Calendar.getInstance();
-        c.setTime(date);
+        c.setTime(value);
 
-        // Create a new instance of TimePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this,
+        return new DatePickerDialog(this.activity, this,
                 c.get(Calendar.YEAR), c.get(Calendar.MONTH) - 1, c.get(Calendar.DAY_OF_MONTH));
     }
 

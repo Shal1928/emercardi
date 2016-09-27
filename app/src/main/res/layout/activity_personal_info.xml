@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>
-        <!--<import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />-->
+        <import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -88,7 +88,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="none"
-
+                        android:text="@{StringCalendarConverter.convertToString(personalInfo.dateOfBirth)}"
                         android:onClick="showDatePickerDialog"
                         android:layout_gravity="top|left"
                         android:layout_marginLeft="8dp"
