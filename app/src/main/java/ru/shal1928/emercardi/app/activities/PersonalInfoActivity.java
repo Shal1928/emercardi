@@ -31,6 +31,8 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
     public final ObservableField<String> firstName = new ObservableField<String>();
     public final ObservableField<String> lastName = new ObservableField<String>();
     public final ObservableField<Calendar> dateOfBirth = new ObservableField<Calendar>();
+    public final ObservableField<Integer> height = new ObservableField<Integer>();
+    public final ObservableField<Integer> weight = new ObservableField<Integer>();
     //endregion
 
     private static final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
@@ -116,5 +118,11 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         calendar.setTime(date);
 
         return calendar;
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static Integer getIntegerFromText(TextView view) {
+        String text = view.getText().toString();
+        return text == null || text.isEmpty() ? 0 : Integer.valueOf(text);
     }
 }

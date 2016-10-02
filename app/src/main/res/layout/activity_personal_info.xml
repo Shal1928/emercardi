@@ -93,93 +93,61 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="28dp">
 
-            <!--<LinearLayout-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="top|center_horizontal"-->
-                    <!--android:layout_marginTop="35dp">-->
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="left|top"
+                           android:layout_marginTop="10dp"
+                           android:src="@drawable/ic_accessibility_black_24dp"/>
 
-                <!--<LinearLayout-->
-                        <!--android:orientation="vertical"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="top|center_horizontal"-->
-                        <!--android:layout_weight="0.75"-->
-                        <!--android:paddingRight="15dp">-->
+                <!--suppress AndroidDomInspection -->
+                <EditText
+                        android:id="@+id/heightText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="@={personalInfo.height}"
+                        android:layout_gravity="top|left"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"/>
 
-                    <!--<TextView-->
-                            <!--android:id="@+id/dateOfBirthText"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center_horizontal"-->
-                            <!--android:text="@string/DateOfBirthString"/>-->
+            </LinearLayout>
 
-                    <!--<EditText-->
-                            <!--android:id="@+id/dateOfBirthEditText"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="left|top|center_horizontal"-->
-                            <!--android:inputType="textPersonName"-->
-                            <!--android:text="@{user.firstName}"-->
-                            <!--android:ems="10"/>-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="28dp">
+                <!--suppress AndroidDomInspection -->
+                <EditText
+                        android:id="@+id/weightText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="@={personalInfo.weight}"
+                        android:layout_gravity="top|left"
+                        android:layout_marginLeft="32dp"
+                        android:ems="10"/>
 
-                <!--</LinearLayout>-->
+            </LinearLayout>
 
-                <!--<LinearLayout-->
-                        <!--android:orientation="vertical"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="top|center_horizontal"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:paddingRight="7.5dp">-->
-
-                    <!--<TextView-->
-                            <!--android:id="@+id/heightText"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center_horizontal"-->
-                            <!--android:text="@string/HeightString"/>-->
-
-                    <!--<EditText-->
-                            <!--android:id="@+id/heightEditText"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="left|top|center_horizontal"-->
-                            <!--android:inputType="numberDecimal"-->
-                            <!--android:text="@{user.firstName}"-->
-                            <!--android:ems="10"/>-->
-
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                        <!--android:orientation="vertical"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="top|center_horizontal"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:paddingLeft="7.5dp">-->
-
-                    <!--<TextView-->
-                            <!--android:id="@+id/weightOfBirthText"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center_horizontal"-->
-                            <!--android:text="@string/WeightString"/>-->
-
-                    <!--<EditText-->
-                            <!--android:id="@+id/weightEditText"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="left|top|center_horizontal"-->
-                            <!--android:inputType="number"-->
-                            <!--android:text="@{user.firstName}"-->
-                            <!--android:ems="10"/>-->
-
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
+            <!--<EditText-->
+            <!--android:id="@+id/weightEditText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="left|top|center_horizontal"-->
+            <!--android:inputType="number"-->
+            <!--android:text="@{user.firstName}"-->
+            <!--android:ems="10"/>-->
         </LinearLayout>
 
 
