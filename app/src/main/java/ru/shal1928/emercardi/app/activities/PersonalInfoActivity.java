@@ -66,6 +66,8 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
         this.dateOfBirth.set(calendar);
+        this.height.set(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
+        this.weight.set(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
     }
 
     private void inflateResult() {
@@ -118,6 +120,14 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         calendar.setTime(date);
 
         return calendar;
+    }
+
+
+    @BindingAdapter("android:text")
+    public static void setText(TextView view, Integer value) {
+        if (value != null) {
+            view.setText(String.valueOf(value));
+        }
     }
 
     @InverseBindingAdapter(attribute = "android:text")

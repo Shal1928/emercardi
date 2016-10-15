@@ -58,6 +58,8 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
         initToolbar(R.id.toolbar, true, true);
 
         this.user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
+        this.user.height.set(180);
+        this.user.weight.set(93);
 
         fab1_layout = (LinearLayout) findViewById(R.id.fab1_layout);
         fab2_layout = (LinearLayout) findViewById(R.id.fab2_layout);

@@ -11,8 +11,7 @@ import java.util.List;
  */
 public class HealthModel {
 
-    private int height;
-    private int weight;
+
     private BloodModel blood;
     private List<String> diseases;
     private List<String> allergies;
@@ -28,8 +27,6 @@ public class HealthModel {
 
     public HealthModel(int height, int weight, BloodModel blood, List<String> diseases, List<String> allergies,
         List<Medicine> medicines) {
-        this.height = height;
-        this.weight = weight;
         this.blood = blood;
         this.diseases = diseases;
         this.allergies = allergies;
@@ -37,22 +34,6 @@ public class HealthModel {
     }
 
 
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
 
     public BloodModel getBlood() {
         return blood;

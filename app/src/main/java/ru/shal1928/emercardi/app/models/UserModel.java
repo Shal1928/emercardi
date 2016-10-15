@@ -24,6 +24,10 @@ public class UserModel extends BaseObservable {
 
     public final ObservableField<Integer> age = new ObservableField<Integer>();
 
+    public final ObservableField<Integer> height = new ObservableField<Integer>();
+
+    public final ObservableField<Integer> weight = new ObservableField<Integer>();
+
     public final ObservableField<HealthModel> healthData = new ObservableField<HealthModel>();
 
     public final ObservableField<List<Object>> notificationRecipients = new ObservableField<List<Object>>();

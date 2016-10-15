@@ -17,11 +17,15 @@ public class IntentAdapter {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
         userModel.dateOfBirth.set(calendar);
+        userModel.height.set(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
+        userModel.weight.set(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
     }
 
     public static void setPersonalInfoToIntent(Intent intent, UserModel userModel) {
         intent.putExtra(UserModelProperties.FIRST_NAME, userModel.firstName.get());
         intent.putExtra(UserModelProperties.LAST_NAME, userModel.lastName.get());
         intent.putExtra(UserModelProperties.BIRTH_DATE, userModel.dateOfBirth.get().getTimeInMillis());
+        intent.putExtra(UserModelProperties.HEIGHT, userModel.height.get());
+        intent.putExtra(UserModelProperties.WEIGHT, userModel.weight.get());
     }
 }

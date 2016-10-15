@@ -5,9 +5,11 @@ package ru.shal1928.emercardi.app.models.parts;
  */
 public final class UserModelProperties {
 
-    public static String FIRST_NAME = "firstName";
-    public static String LAST_NAME = "lastName";
-    public static String BIRTH_DATE = "birthDate";
+    public static final String FIRST_NAME = "firstName";
+    public static final String LAST_NAME = "lastName";
+    public static final String BIRTH_DATE = "birthDate";
+    public static final String HEIGHT = "height";
+    public static final String WEIGHT = "weight";
 
     private UserModelProperties() {
         //
