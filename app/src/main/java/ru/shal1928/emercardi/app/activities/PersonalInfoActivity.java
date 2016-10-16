@@ -2,6 +2,7 @@ package ru.shal1928.emercardi.app.activities;
 
 import android.content.Intent;
 import android.databinding.BindingAdapter;
+import android.databinding.BindingConversion;
 import android.databinding.DataBindingUtil;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableField;
@@ -75,6 +76,8 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         result.putExtra(UserModelProperties.FIRST_NAME, this.firstName.get());
         result.putExtra(UserModelProperties.LAST_NAME, this.lastName.get());
         result.putExtra(UserModelProperties.BIRTH_DATE, this.dateOfBirth.get().getTimeInMillis());
+        result.putExtra(UserModelProperties.HEIGHT, this.height.get());
+        result.putExtra(UserModelProperties.WEIGHT, this.weight.get());
         setResult(RESULT_OK, result);
     }
 
@@ -122,17 +125,28 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         return calendar;
     }
 
+//    Ok, I've found a solution: set the new text o
+    // nly if the text of the view is different from the value in the @BindingAdapter("android:text")
+//    @BindingAdapter("android:text")
+//    public static void setText(TextView view, Integer value) {
+//        if (value != null) {
+//            view.setText(String.valueOf(value));
+//        }
+//    }
+//
+//    @InverseBindingAdapter(attribute = "android:text")
+//    public static Integer getIntegerFromText(TextView view) {
+//        String text = view.getText().toString();
+//        return text == null || text.isEmpty() ? 0 : Integer.valueOf(text);
+//    }
 
-    @BindingAdapter("android:text")
-    public static void setText(TextView view, Integer value) {
-        if (value != null) {
-            view.setText(String.valueOf(value));
-        }
+    @BindingConversion
+    public static String convertIntToString(Integer value) {
+        return String.valueOf(value);
     }
 
-    @InverseBindingAdapter(attribute = "android:text")
-    public static Integer getIntegerFromText(TextView view) {
-        String text = view.getText().toString();
-        return text == null || text.isEmpty() ? 0 : Integer.valueOf(text);
+    @BindingConversion
+    public static Integer convertIntToString(String value) {
+        return Integer.valueOf(value);
     }
 }
