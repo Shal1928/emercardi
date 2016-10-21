@@ -2,7 +2,6 @@ package ru.shal1928.emercardi.app.activities;
 
 import android.content.Intent;
 import android.databinding.BindingAdapter;
-import android.databinding.BindingConversion;
 import android.databinding.DataBindingUtil;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableField;
@@ -125,28 +124,16 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         return calendar;
     }
 
-//    Ok, I've found a solution: set the new text o
-    // nly if the text of the view is different from the value in the @BindingAdapter("android:text")
-//    @BindingAdapter("android:text")
-//    public static void setText(TextView view, Integer value) {
-//        if (value != null) {
-//            view.setText(String.valueOf(value));
-//        }
-//    }
-//
-//    @InverseBindingAdapter(attribute = "android:text")
-//    public static Integer getIntegerFromText(TextView view) {
-//        String text = view.getText().toString();
-//        return text == null || text.isEmpty() ? 0 : Integer.valueOf(text);
-//    }
-
-    @BindingConversion
-    public static String convertIntToString(Integer value) {
-        return String.valueOf(value);
+    @BindingAdapter("android:text")
+    public static void setText(TextView view, Integer value) {
+        if (value != null && view.getText() != null && !view.getText().toString().equals(String.valueOf(value))) {
+            view.setText(String.valueOf(value < 0 ? "" : value));
+        }
     }
 
-    @BindingConversion
-    public static Integer convertIntToString(String value) {
-        return Integer.valueOf(value);
+    @InverseBindingAdapter(attribute = "android:text")
+    public static Integer getIntegerFromText(TextView view) {
+        String text = view.getText().toString();
+        return text == null || text.isEmpty() ? -1 : Integer.valueOf(text);
     }
 }
