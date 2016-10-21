@@ -256,5 +256,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
         }
 
         Log.d("USER: ", this.user.firstName.get() + " " + this.user.lastName.get());
+        Log.d("USER: ", this.user.dateOfBirth.get().toString());
+        Log.d("USER: ", this.user.height.get() + " " + this.user.weight.get());
     }
 }

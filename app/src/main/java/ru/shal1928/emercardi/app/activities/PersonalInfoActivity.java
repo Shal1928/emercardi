@@ -1,10 +1,8 @@
 package ru.shal1928.emercardi.app.activities;
 
-import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.InverseBindingAdapter;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +12,9 @@ import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.dialogs.DatePickerFragment;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
-import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
+import ru.shal1928.emercardi.app.models.IPersonalInfo;
+import ru.shal1928.emercardi.app.viewmodels.IAwareIntnet;
+import ru.shal1928.emercardi.app.viewmodels.PersonalInfoViewModel;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,17 +23,11 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class PersonalInfoActivity extends ExtAppCompatActivity {
+public class PersonalInfoActivity<T extends IPersonalInfo & IAwareIntnet> extends ExtAppCompatActivity {
 
     ActivityPersonalInfoBinding binder;
 
-    //region Observable Fields
-    public final ObservableField<String> firstName = new ObservableField<String>();
-    public final ObservableField<String> lastName = new ObservableField<String>();
-    public final ObservableField<Calendar> dateOfBirth = new ObservableField<Calendar>();
-    public final ObservableField<Integer> height = new ObservableField<Integer>();
-    public final ObservableField<Integer> weight = new ObservableField<Integer>();
-    //endregion
+    T viewModel;
 
     private static final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
 
@@ -43,11 +37,11 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateData();
+        this.viewModel = (T) new PersonalInfoViewModel(getIntent());
 
         this.binder = (ActivityPersonalInfoBinding) DataBindingUtil.setContentView(this,
                 R.layout.activity_personal_info);
-        this.binder.setPersonalInfo(this);
+        this.binder.setPersonalInfo(viewModel);
 
         initToolbar(R.id.toolbar, true, true);
 
@@ -59,36 +53,14 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
         });
     }
 
-    private void inflateData() {
-        Intent intent = getIntent();
-        this.firstName.set(intent.getStringExtra(UserModelProperties.FIRST_NAME));
-        this.lastName.set(intent.getStringExtra(UserModelProperties.LAST_NAME));
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
-        this.dateOfBirth.set(calendar);
-        this.height.set(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
-        this.weight.set(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
-    }
-
-    private void inflateResult() {
-        Intent result = new Intent();
-        result.putExtra(UserModelProperties.FIRST_NAME, this.firstName.get());
-        result.putExtra(UserModelProperties.LAST_NAME, this.lastName.get());
-        result.putExtra(UserModelProperties.BIRTH_DATE, this.dateOfBirth.get().getTimeInMillis());
-        result.putExtra(UserModelProperties.HEIGHT, this.height.get());
-        result.putExtra(UserModelProperties.WEIGHT, this.weight.get());
-        setResult(RESULT_OK, result);
-    }
-
     @Override public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_done:
-                inflateResult();
+                setResult(RESULT_OK, viewModel.toIntent());
                 onBackPressed();
                 return true;
             default:
@@ -98,7 +70,7 @@ public class PersonalInfoActivity extends ExtAppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.init(this, R.id.dateOfBirthText, dateOfBirth.get().getTime());
+        newFragment.init(this, R.id.dateOfBirthText, viewModel.getDateOfBirth().getTime());
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 

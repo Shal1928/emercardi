@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>
+        <!--<variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>-->
+        <variable name="personalInfo" type="ru.shal1928.emercardi.app.models.IPersonalInfo"/>
         <!--<import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />-->
     </data>
 
@@ -139,15 +140,6 @@
                         android:ems="10"/>
 
             </LinearLayout>
-
-            <!--<EditText-->
-            <!--android:id="@+id/weightEditText"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="left|top|center_horizontal"-->
-            <!--android:inputType="number"-->
-            <!--android:text="@{user.firstName}"-->
-            <!--android:ems="10"/>-->
         </LinearLayout>
 
 
