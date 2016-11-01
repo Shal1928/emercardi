@@ -12,7 +12,7 @@ import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.dialogs.DatePickerFragment;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
-import ru.shal1928.emercardi.app.models.IPersonalInfo;
+import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 import ru.shal1928.emercardi.app.viewmodels.IAwareIntnet;
 import ru.shal1928.emercardi.app.viewmodels.PersonalInfoViewModel;
 

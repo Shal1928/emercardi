@@ -1,9 +1,9 @@
 package ru.shal1928.emercardi.app.viewmodels;
 
 import android.content.Intent;
-import android.databinding.Observable;
 import android.databinding.ObservableField;
-import ru.shal1928.emercardi.app.models.IPersonalInfo;
+import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
+import ru.shal1928.emercardi.app.models.PersonalInfo;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
 import java.util.Calendar;

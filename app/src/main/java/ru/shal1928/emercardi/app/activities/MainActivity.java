@@ -23,7 +23,8 @@ import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.fragments.PlanetFragment;
 import ru.shal1928.emercardi.app.helpers.IntentAdapter;
-import ru.shal1928.emercardi.app.models.UserModel;
+import ru.shal1928.emercardi.app.models.PersonalInfo;
+import ru.shal1928.emercardi.app.viewmodels.MainViewModel;
 
 import java.util.Calendar;
 
@@ -46,7 +47,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
 
     private Runnable runnable;
 
-    private UserModel user;
+    private MainViewModel mainViewModel;
 
     public MainActivity() {
         super(R.menu.menu_main);
@@ -57,9 +58,16 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_main);
         initToolbar(R.id.toolbar, true, true);
 
-        this.user = new UserModel("Константин", "Константинопольский", Calendar.getInstance(), null);
-        this.user.height.set(180);
-        this.user.weight.set(93);
+        PersonalInfo personalInfo = new PersonalInfo();
+        personalInfo.setFirstName("Константин");
+        personalInfo.setLastName("Константинопольский");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(1990, 29, 02);
+        personalInfo.setDateOfBirth(calendar);
+        personalInfo.setHeight(180);
+        personalInfo.setWeight(93);
+        this.mainViewModel = new MainViewModel();
+        this.mainViewModel.setPersonalInfo(personalInfo);
 
         fab1_layout = (LinearLayout) findViewById(R.id.fab1_layout);
         fab2_layout = (LinearLayout) findViewById(R.id.fab2_layout);
@@ -133,10 +141,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
                 break;
             case R.id.fab1:
                 Intent intent = new Intent(this, PersonalInfoActivity.class);
-//                intent.putExtra("User", user);
-//                Use Parseable
-//                startActivity(intent);
-                IntentAdapter.setPersonalInfoToIntent(intent, this.user);
+                IntentAdapter.setPersonalInfoToIntent(intent, this.mainViewModel);
                 startActivityForResult(intent, PERSONAL_INFO_REQUEST);
 
 
@@ -251,12 +256,14 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERSONAL_INFO_REQUEST) {
             if (resultCode == RESULT_OK) {
-                IntentAdapter.setPersonalInfoToModel(data, this.user);
+                IntentAdapter.setPersonalInfoToModel(data, this.mainViewModel);
             }
         }
 
-        Log.d("USER: ", this.user.firstName.get() + " " + this.user.lastName.get());
-        Log.d("USER: ", this.user.dateOfBirth.get().toString());
-        Log.d("USER: ", this.user.height.get() + " " + this.user.weight.get());
+        Log.d("USER: ", this.mainViewModel.getPersonalInfo().getFirstName() + " " +  this.mainViewModel
+                .getPersonalInfo().getLastName());
+        Log.d("USER: ",  this.mainViewModel.getPersonalInfo().getDateOfBirth().toString());
+        Log.d("USER: ", this.mainViewModel.getPersonalInfo().getHeight() + " " +
+                this.mainViewModel.getPersonalInfo().getWeight());
     }
 }

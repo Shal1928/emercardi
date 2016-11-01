@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <!--<variable name="personalInfo" type="ru.shal1928.emercardi.app.activities.PersonalInfoActivity"/>-->
-        <variable name="personalInfo" type="ru.shal1928.emercardi.app.models.IPersonalInfo"/>
+        <variable name="personalInfo" type="ru.shal1928.emercardi.app.models.parts.IPersonalInfo"/>
         <!--<import type="ru.shal1928.emercardi.app.converters.StringCalendarConverter" />-->
     </data>
 
