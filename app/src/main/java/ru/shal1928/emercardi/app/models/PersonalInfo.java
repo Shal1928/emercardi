@@ -1,6 +1,5 @@
 package ru.shal1928.emercardi.app.models;
 
-import android.content.Intent;
 import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 
 import java.util.Calendar;
@@ -18,6 +17,14 @@ public class PersonalInfo implements IPersonalInfo {
 
     public PersonalInfo() {
 
+    }
+
+    public PersonalInfo(IPersonalInfo personalInfo) {
+        this.firstName = personalInfo.getFirstName();
+        this.lastName = personalInfo.getLastName();
+        this.dateOfBirth = personalInfo.getDateOfBirth();
+        this.height = personalInfo.getHeight();
+        this.weight = personalInfo.getWeight();
     }
 
     public PersonalInfo(String firstName, String lastName, Calendar dateOfBirth, Integer height, Integer weight) {

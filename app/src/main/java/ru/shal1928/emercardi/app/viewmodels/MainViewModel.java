@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class MainViewModel {
 
-    private final ObservableField<PersonalInfo> personalInfo = new ObservableField<PersonalInfo>();
+    private final ObservableField<IPersonalInfo> personalInfo = new ObservableField<IPersonalInfo>();
 
     private final ObservableField<HealthModel> healthData = new ObservableField<HealthModel>();
 
@@ -25,11 +25,11 @@ public class MainViewModel {
         //
     }
 
-    public PersonalInfo getPersonalInfo() {
+    public IPersonalInfo getPersonalInfo() {
         return personalInfo.get();
     }
 
-    public void setPersonalInfo(PersonalInfo personalInfo) {
+    public void setPersonalInfo(IPersonalInfo personalInfo) {
         this.personalInfo.set(personalInfo);
     }
 
@@ -47,5 +47,27 @@ public class MainViewModel {
 
     public void setNotificationRecipients(List<Object> notificationRecipients) {
         this.notificationRecipients.set(notificationRecipients);
+    }
+
+    public void setPersonalInfo(Intent intent) {
+        IPersonalInfo personalInfo = new PersonalInfo();
+        personalInfo.setFirstName(intent.getStringExtra(UserModelProperties.FIRST_NAME));
+        personalInfo.setLastName(intent.getStringExtra(UserModelProperties.LAST_NAME));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
+        personalInfo.setDateOfBirth(calendar);
+        personalInfo.setHeight(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
+        personalInfo.setWeight(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
+        setPersonalInfo(personalInfo);
+    }
+
+    public Intent withPersonalInfo(Intent intent) {
+        IPersonalInfo personalInfo = getPersonalInfo();
+        intent.putExtra(UserModelProperties.FIRST_NAME, personalInfo.getFirstName());
+        intent.putExtra(UserModelProperties.LAST_NAME, personalInfo.getLastName());
+        intent.putExtra(UserModelProperties.BIRTH_DATE, personalInfo.getDateOfBirth().getTimeInMillis());
+        intent.putExtra(UserModelProperties.HEIGHT, personalInfo.getHeight());
+        intent.putExtra(UserModelProperties.WEIGHT, personalInfo.getWeight());
+        return intent;
     }
 }

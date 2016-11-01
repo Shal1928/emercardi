@@ -141,7 +141,8 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
                 break;
             case R.id.fab1:
                 Intent intent = new Intent(this, PersonalInfoActivity.class);
-                IntentAdapter.setPersonalInfoToIntent(intent, this.mainViewModel);
+                this.mainViewModel.withPersonalInfo(intent);
+                //Переделать на билдер все таки
                 startActivityForResult(intent, PERSONAL_INFO_REQUEST);
 
 

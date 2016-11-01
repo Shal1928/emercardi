@@ -11,7 +11,7 @@ import java.util.Calendar;
 /**
  * Created by Danila on 21.10.2016.
  */
-public class PersonalInfoViewModel implements IPersonalInfo, IAwareIntnet {
+public class PersonalInfoViewModel implements IHasRealModel<IPersonalInfo>, IPersonalInfo, IAwareIntnet {
 
     //region Observable Fields
     private final ObservableField<String> firstName = new ObservableField<String>();
@@ -87,5 +87,9 @@ public class PersonalInfoViewModel implements IPersonalInfo, IAwareIntnet {
         setDateOfBirth(calendar);
         setHeight(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
         setWeight(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
+    }
+
+    @Override public IPersonalInfo getRealModel() {
+        return new PersonalInfo(this);
     }
 }
