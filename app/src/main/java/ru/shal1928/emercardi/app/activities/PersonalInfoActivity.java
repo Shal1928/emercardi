@@ -12,6 +12,7 @@ import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.dialogs.DatePickerFragment;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
+import ru.shal1928.emercardi.app.helpers.IntentBuilder;
 import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 import ru.shal1928.emercardi.app.viewmodels.IAwareIntnet;
 import ru.shal1928.emercardi.app.viewmodels.PersonalInfoViewModel;
@@ -37,7 +38,8 @@ public class PersonalInfoActivity<T extends IPersonalInfo & IAwareIntnet> extend
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.viewModel = (T) new PersonalInfoViewModel(getIntent());
+        this.viewModel = IntentBuilder.getRealModel(getIntent(), IPersonalInfo.class);
+//        new PersonalInfoViewModel(getIntent())
 
         this.binder = (ActivityPersonalInfoBinding) DataBindingUtil.setContentView(this,
                 R.layout.activity_personal_info);
@@ -60,7 +62,7 @@ public class PersonalInfoActivity<T extends IPersonalInfo & IAwareIntnet> extend
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_done:
-                setResult(RESULT_OK, viewModel.toIntent());
+                setResult(RESULT_OK, new IntentBuilder().with(this.viewModel));
                 onBackPressed();
                 return true;
             default:

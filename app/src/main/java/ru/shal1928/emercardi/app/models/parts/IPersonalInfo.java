@@ -6,23 +6,24 @@ import java.util.Calendar;
  * Created by Danila on 31.10.2016.
  */
 public interface IPersonalInfo {
-    String getFirstName();
+
+    @IntentGetRuleRecord("FirstName") String getFirstName();
 
     void setFirstName(String firstName);
 
-    String getLastName();
+    @IntentGetRuleRecord("LastName") String getLastName();
 
     void setLastName(String lastName);
 
-    Calendar getDateOfBirth();
+    @IntentGetRuleRecord("DateOfBirth") Calendar getDateOfBirth();
 
     void setDateOfBirth(Calendar dateOfBirth);
 
-    Integer getHeight();
+    @IntentGetRuleRecord("Height") Integer getHeight();
 
     void setHeight(Integer height);
 
-    Integer getWeight();
+    @IntentGetRuleRecord("Weight") Integer getWeight();
 
     void setWeight(Integer weight);
 }

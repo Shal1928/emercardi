@@ -22,8 +22,9 @@ import android.widget.ListView;
 import ru.shal1928.emercardi.app.R;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.fragments.PlanetFragment;
-import ru.shal1928.emercardi.app.helpers.IntentAdapter;
+import ru.shal1928.emercardi.app.helpers.IntentBuilder;
 import ru.shal1928.emercardi.app.models.PersonalInfo;
+import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 import ru.shal1928.emercardi.app.viewmodels.MainViewModel;
 
 import java.util.Calendar;
@@ -140,10 +141,12 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
                 animateFAB();
                 break;
             case R.id.fab1:
-                Intent intent = new Intent(this, PersonalInfoActivity.class);
-                this.mainViewModel.withPersonalInfo(intent);
+//                Intent intent = new Intent(this, PersonalInfoActivity.class);
+                IntentBuilder intentBuilder = new IntentBuilder(this, PersonalInfoActivity.class);
+
+//                this.mainViewModel.withPersonalInfo(intent);
                 //Переделать на билдер все таки
-                startActivityForResult(intent, PERSONAL_INFO_REQUEST);
+                startActivityForResult(intentBuilder.with(this.mainViewModel), PERSONAL_INFO_REQUEST);
 
 
                 fab.clearAnimation();
@@ -257,7 +260,8 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERSONAL_INFO_REQUEST) {
             if (resultCode == RESULT_OK) {
-                IntentAdapter.setPersonalInfoToModel(data, this.mainViewModel);
+                this.mainViewModel.setPersonalInfo(
+                        (IPersonalInfo) IntentBuilder.getRealModel(data, IPersonalInfo.class));
             }
         }
 
