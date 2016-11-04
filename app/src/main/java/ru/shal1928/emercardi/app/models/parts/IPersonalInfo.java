@@ -15,9 +15,9 @@ public interface IPersonalInfo {
 
     void setLastName(String lastName);
 
-    @IntentGetRuleRecord("DateOfBirth") Calendar getDateOfBirth();
+    @IntentGetRuleRecord("DateOfBirth") Long getDateOfBirth();
 
-    void setDateOfBirth(Calendar dateOfBirth);
+    void setDateOfBirth(Long dateOfBirth);
 
     @IntentGetRuleRecord("Height") Integer getHeight();
 

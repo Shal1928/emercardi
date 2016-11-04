@@ -72,19 +72,19 @@ public class PersonalInfoActivity<T extends IPersonalInfo & IAwareIntnet> extend
 
     public void showDatePickerDialog(View v) {
         DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.init(this, R.id.dateOfBirthText, viewModel.getDateOfBirth().getTime());
+        newFragment.init(this, R.id.dateOfBirthText, new Date(viewModel.getDateOfBirth()));
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     @BindingAdapter("android:text")
-    public static void setText(TextView view, Calendar value) {
+    public static void setText(TextView view, Long value) {
         if (value != null) {
-            view.setText(dateFormat.format(value.getTime()));
+            view.setText(dateFormat.format(new Date(value)));
         }
     }
 
     @InverseBindingAdapter(attribute = "android:text")
-    public static Calendar getText(TextView view) {
+    public static Long getText(TextView view) {
         Date date;
         try {
             date = dateFormat.parse(view.getText().toString());
@@ -95,7 +95,7 @@ public class PersonalInfoActivity<T extends IPersonalInfo & IAwareIntnet> extend
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
-        return calendar;
+        return calendar.getTimeInMillis();
     }
 
     @BindingAdapter("android:text")
