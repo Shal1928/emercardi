@@ -13,6 +13,7 @@ import ru.shal1928.emercardi.app.activities.dialogs.DatePickerFragment;
 import ru.shal1928.emercardi.app.activities.parts.ExtAppCompatActivity;
 import ru.shal1928.emercardi.app.databinding.ActivityPersonalInfoBinding;
 import ru.shal1928.emercardi.app.helpers.IntentBuilder;
+import ru.shal1928.emercardi.app.models.PersonalInfo;
 import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 import ru.shal1928.emercardi.app.viewmodels.IAwareIntnet;
 
@@ -37,7 +38,7 @@ public class PersonalInfoActivity<T extends IPersonalInfo & IAwareIntnet> extend
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.viewModel = IntentBuilder.getRealModel(getIntent(), IPersonalInfo.class);
+        this.viewModel = IntentBuilder.getRealModel(getIntent(), PersonalInfo.class);
 //        new PersonalInfoViewModel(getIntent())
 
         this.binder = (ActivityPersonalInfoBinding) DataBindingUtil.setContentView(this,

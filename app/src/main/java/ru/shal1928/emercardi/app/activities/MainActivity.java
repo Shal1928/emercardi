@@ -261,7 +261,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
         if (requestCode == PERSONAL_INFO_REQUEST) {
             if (resultCode == RESULT_OK) {
                 this.mainViewModel.setPersonalInfo(
-                        (IPersonalInfo) IntentBuilder.getRealModel(data, IPersonalInfo.class));
+                        (IPersonalInfo) IntentBuilder.getRealModel(data, PersonalInfo.class));
             }
         }
 
