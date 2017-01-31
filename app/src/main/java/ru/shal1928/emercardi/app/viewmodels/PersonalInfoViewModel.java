@@ -2,8 +2,8 @@ package ru.shal1928.emercardi.app.viewmodels;
 
 import android.content.Intent;
 import android.databinding.ObservableField;
-import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 import ru.shal1928.emercardi.app.models.PersonalInfo;
+import ru.shal1928.emercardi.app.models.parts.IPersonalInfo;
 import ru.shal1928.emercardi.app.models.parts.UserModelProperties;
 
 import java.util.Calendar;
@@ -16,7 +16,7 @@ public class PersonalInfoViewModel implements IHasRealModel<IPersonalInfo>, IPer
     //region Observable Fields
     private final ObservableField<String> firstName = new ObservableField<String>();
     private final ObservableField<String> lastName = new ObservableField<String>();
-    private final ObservableField<Long> dateOfBirth = new ObservableField<Long>();
+    private final ObservableField<Calendar> dateOfBirth = new ObservableField<Calendar>();
     private final ObservableField<Integer> height = new ObservableField<Integer>();
     private final ObservableField<Integer> weight = new ObservableField<Integer>();
     //endregion
@@ -45,11 +45,11 @@ public class PersonalInfoViewModel implements IHasRealModel<IPersonalInfo>, IPer
         this.lastName.set(lastName);
     }
 
-    @Override public Long getDateOfBirth() {
+    @Override public Calendar getDateOfBirth() {
         return this.dateOfBirth.get();
     }
 
-    @Override public void setDateOfBirth(Long dateOfBirth) {
+    @Override public void setDateOfBirth(Calendar dateOfBirth) {
         this.dateOfBirth.set(dateOfBirth);
     }
 
@@ -82,9 +82,11 @@ public class PersonalInfoViewModel implements IHasRealModel<IPersonalInfo>, IPer
     @Override public void fromIntent(Intent intent) {
         setFirstName(intent.getStringExtra(UserModelProperties.FIRST_NAME));
         setLastName(intent.getStringExtra(UserModelProperties.LAST_NAME));
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis();
-        setDateOfBirth(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
+        setDateOfBirth(calendar);
+
         setHeight(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
         setWeight(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
     }

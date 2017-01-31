@@ -53,9 +53,11 @@ public class MainViewModel {
         IPersonalInfo personalInfo = new PersonalInfo();
         personalInfo.setFirstName(intent.getStringExtra(UserModelProperties.FIRST_NAME));
         personalInfo.setLastName(intent.getStringExtra(UserModelProperties.LAST_NAME));
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis();
-        personalInfo.setDateOfBirth(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(intent.getLongExtra(UserModelProperties.BIRTH_DATE, 0));
+        personalInfo.setDateOfBirth(calendar);
+
         personalInfo.setHeight(intent.getIntExtra(UserModelProperties.HEIGHT, 0));
         personalInfo.setWeight(intent.getIntExtra(UserModelProperties.WEIGHT, 0));
         setPersonalInfo(personalInfo);

@@ -7,23 +7,18 @@ import java.util.Calendar;
  */
 public interface IPersonalInfo {
 
-    @IntentGetRuleRecord("FirstName") String getFirstName();
-
-    void setFirstName(String firstName);
+    @IntentGetRuleRecord(value = "FirstName") String getFirstName();
+    @IntentSetRuleRecord("FirstName") void setFirstName(String firstName);
 
     @IntentGetRuleRecord("LastName") String getLastName();
+    @IntentSetRuleRecord("LastName") void setLastName(String lastName);
 
-    void setLastName(String lastName);
-
-    @IntentGetRuleRecord("DateOfBirth") Long getDateOfBirth();
-
-    void setDateOfBirth(Long dateOfBirth);
+    @IntentGetRuleRecord(value = "DateOfBirth", getModelMethods = {"getTimeInMillis"}) Calendar getDateOfBirth();
+    @IntentSetRuleRecord(value = "DateOfBirth") void setDateOfBirth(Calendar calendar);
 
     @IntentGetRuleRecord("Height") Integer getHeight();
-
-    void setHeight(Integer height);
+    @IntentSetRuleRecord("Height") void setHeight(Integer height);
 
     @IntentGetRuleRecord("Weight") Integer getWeight();
-
-    void setWeight(Integer weight);
+    @IntentSetRuleRecord("Weight") void setWeight(Integer weight);
 }

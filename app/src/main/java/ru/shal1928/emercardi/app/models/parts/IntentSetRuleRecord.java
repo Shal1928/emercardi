@@ -11,5 +11,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
 public @interface IntentSetRuleRecord {
-    public String value();
+    String value();
+    String[] setModelMethods() default "";
 }
