@@ -1,10 +1,15 @@
 package ru.shal1928.emercardi.app.models.parts;
 
+import ru.shal1928.emercardi.app.models.parts.core.HasRule;
+import ru.shal1928.emercardi.app.models.parts.core.IntentGetRuleRecord;
+import ru.shal1928.emercardi.app.models.parts.core.IntentSetRuleRecord;
+
 import java.util.Calendar;
 
 /**
  * Created by Danila on 31.10.2016.
  */
+@HasRule
 public interface IPersonalInfo {
 
     @IntentGetRuleRecord(value = "FirstName") String getFirstName();

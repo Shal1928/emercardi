@@ -2,8 +2,9 @@ package ru.shal1928.emercardi.app.helpers;
 
 import android.content.Context;
 import android.content.Intent;
-import ru.shal1928.emercardi.app.models.parts.IntentGetRuleRecord;
-import ru.shal1928.emercardi.app.models.parts.IntentSetRuleRecord;
+import ru.shal1928.emercardi.app.models.parts.core.HasRule;
+import ru.shal1928.emercardi.app.models.parts.core.IntentGetRuleRecord;
+import ru.shal1928.emercardi.app.models.parts.core.IntentSetRuleRecord;
 
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
@@ -14,6 +15,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Danila on 01.11.2016.
@@ -53,24 +55,21 @@ public class IntentBuilder {
             try {
                 Rule.Methods methods = entry.getValue();
 
-                Object value = null;
-                Iterator<Method> iterator = methods.getModelMethods().iterator();
-                if(iterator.hasNext()) {
-                    value = getNextValueLevel(obj, iterator);
-                }
+                Iterator iterator = methods.getModelMethods().iterator();
+                Object val = iterator.hasNext() ? getNextValueLevel(obj, iterator) : null;
 
-                methods.getIntentMethod().invoke(intent, value);
+                methods.getIntentMethod().invoke(intent, entry.getKey(), val);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
-
+        
         return intent;
     }
 
-    private Object getNextValueLevel(Object obj, Iterator<Method> iteratorMethod){
+    private Object getNextValueLevel(Object obj, Iterator iteratorMethod){
         try {
-            Object value =  iteratorMethod.next().invoke(obj);
+            Object value = ((Method)iteratorMethod.next()).invoke(obj);
             if(iteratorMethod.hasNext()) {
                 value = getNextValueLevel(value, iteratorMethod);
             }
@@ -81,16 +80,20 @@ public class IntentBuilder {
         }
     }
 
+    private static Object value;
     public static <T> T getRealModel(Intent intent, Class cls) {
         Rule rule = getRule(cls);
         T realModel = (T) createInstance(cls);
         for(Map.Entry<String, Rule.Methods> entry:rule.setMethods.entrySet()) {
             try {
                 Rule.Methods methods = entry.getValue();
-                Object value = methods.getIntentMethod().invoke(intent);
+                String property = entry.getKey();
+//                FirstName only 2 methods for String
+                value = methods.getIntentMethod().invoke(intent, property, methods.getInstanceOfReturnType());
 
                 Iterator<Method> iterator = methods.getModelMethods().iterator();
                 if(iterator.hasNext()) {
+
                     Method setModelMethod = iterator.next();
                     switch (setModelMethod.getParameterTypes()[0].getCanonicalName()) {
                         case "java.util.Calendar":
@@ -117,7 +120,25 @@ public class IntentBuilder {
         private Map<String, Methods> getMethods = new HashMap<>();
         private Map<String, Methods> setMethods = new HashMap<>();
 
+        private Class getHasRuleCls(Class cls){
+            Class result = null;
+            if(cls.getAnnotation(HasRule.class) == null) {
+                for(Class i:cls.getInterfaces()) {
+                    if(i.getAnnotation(HasRule.class) != null){
+                        result = i;
+                        break;
+                    }
+                }
+            } else {
+                result = cls;
+            }
+
+            return result;
+        }
+
         public Rule(Class cls) {
+            cls = getHasRuleCls(cls);
+
             for(Method method:cls.getMethods()) {
                 Collection<Method> modelMethods = new ArrayList<>();
                 modelMethods.add(method);
@@ -286,6 +307,74 @@ public class IntentBuilder {
         private class Methods {
             private Collection<Method> modelMethods = new ArrayList<>();
             private Method intentMethod;
+
+            public Object getInstanceOfReturnType(){
+                Class cls = intentMethod.getReturnType();
+                String canName = cls.getCanonicalName();
+                if(cls.isArray()) {
+                    switch (canName) {
+                        case "java.lang.String[]": return new String[0];
+                        case "java.lang.Integer[]":
+                        case "int[]": return new Integer[0];
+                        case "java.lang.Boolean[]":
+                        case "boolean[]": return new Boolean[0];
+                        case "java.lang.Long[]":
+                        case "long[]":
+                        case "java.util.Calendar[]": return new Long[0];
+                        case "java.lang.Double[]":
+                        case "double[]": return new Double[0];
+                        case "java.lang.Float[]":
+                        case "float[]": return new Float[0];
+                        case "java.lang.Short[]":
+                        case "short[]": return new Short[0];
+                        case "java.lang.Byte[]":
+                        case "byte[]": return new Byte[0];
+                        case "java.lang.Character[]":
+                        case "char[]": return new Character[0];
+                        case "java.lang.CharSequence[]": return new CharSequence[0];
+                        default:
+                            return new Object[0];
+                    }
+                } else {
+                    switch (canName) {
+                        case "java.lang.String": return new String();
+                        case "java.lang.Integer":
+                        case "int": return new Integer(0);
+                        case "java.lang.Boolean": return new Boolean(false);
+                        case "java.lang.Long":
+                        case "long":
+                        case "java.util.Calendar": return new Long(0);
+                        case "java.lang.Double":
+                        case "double": return new Double(0);
+                        case "java.lang.Float":
+                        case "float": return new Float(0);
+                        case "java.lang.Short":
+                        case "short": return new Short(null);
+                        case "java.lang.Byte": return new Byte(null);
+                        case "java.lang.Character":
+                        case "char": return new Character('a');
+                        case "java.lang.CharSequence": return new CharSequence() {
+                            @Override public int length() {
+                                return 0;
+                            }
+
+                            @Override public char charAt(int index) {
+                                return 0;
+                            }
+
+                            @Override public CharSequence subSequence(int start, int end) {
+                                return null;
+                            }
+
+                            @Override public String toString() {
+                                return null;
+                            }
+                        };
+                        default:
+                            return new Object();
+                    }
+                }
+            }
 
             public Methods(Method intentMethod, Method... modelMethods) {
                 this.intentMethod = intentMethod;

@@ -146,7 +146,7 @@ public class MainActivity extends ExtAppCompatActivity implements View.OnClickLi
 
 //                this.mainViewModel.withPersonalInfo(intent);
                 //Переделать на билдер все таки
-                startActivityForResult(intentBuilder.with(this.mainViewModel), PERSONAL_INFO_REQUEST);
+                startActivityForResult(intentBuilder.with(this.mainViewModel.getPersonalInfo()), PERSONAL_INFO_REQUEST);
 
 
                 fab.clearAnimation();

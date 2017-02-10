@@ -1,4 +1,4 @@
-package ru.shal1928.emercardi.app.models.parts;
+package ru.shal1928.emercardi.app.models.parts.core;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
-public @interface IntentGetRuleRecord {
+public @interface IntentSetRuleRecord {
     String value();
-    String[] getModelMethods() default "";
+    String[] setModelMethods() default "";
 }
