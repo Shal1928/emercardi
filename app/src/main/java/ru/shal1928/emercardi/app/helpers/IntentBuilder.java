@@ -192,52 +192,61 @@ public class IntentBuilder {
                         case "java.lang.String[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, String[].class)
-                                    : Intent.class.getDeclaredMethod("getStringArrayExtra", String.class);
+                                    : Intent.class.getDeclaredMethod("getStringArrayListExtra", String.class);
                         case "java.lang.Integer[]":
                         case "int[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, int[].class)
-                                    : Intent.class.getDeclaredMethod("getIntArrayExtra", String.class, int[].class);
+                                    : Intent.class.getDeclaredMethod("getIntArrayListExtra",
+                                    String.class, int[].class);
                         case "java.lang.Boolean[]":
                         case "boolean[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, boolean[].class)
-                                    : Intent.class.getDeclaredMethod("getBooleanArrayExtra", String.class, boolean[].class);
+                                    : Intent.class.getDeclaredMethod("getBooleanArrayListExtra",
+                                    String.class, boolean[].class);
                         case "java.lang.Long[]":
                         case "long[]":
                         case "java.util.Calendar[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, long[].class)
-                                    : Intent.class.getDeclaredMethod("getLongArrayExtra", String.class, long[].class);
+                                    : Intent.class.getDeclaredMethod("getLongArrayListExtra",
+                                    String.class, long[].class);
                         case "java.lang.Double[]":
                         case "double[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, double[].class)
-                                    : Intent.class.getDeclaredMethod("getDoubleArrayExtra", String.class, double[].class);
+                                    : Intent.class.getDeclaredMethod("getDoubleArrayListExtra",
+                                    String.class, double[].class);
                         case "java.lang.Float[]":
                         case "float[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, float[].class)
-                                    : Intent.class.getDeclaredMethod("getFloatArrayExtra", String.class, float[].class);
+                                    : Intent.class.getDeclaredMethod("getFloatArrayListExtra",
+                                    String.class, float[].class);
                         case "java.lang.Short[]":
                         case "short[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, short[].class)
-                                    : Intent.class.getDeclaredMethod("getShortArrayExtra", String.class, short[].class);
+                                    : Intent.class.getDeclaredMethod("getShortArrayListExtra",
+                                    String.class, short[].class);
                         case "java.lang.Byte[]":
                         case "byte[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, byte[].class)
-                                    : Intent.class.getDeclaredMethod("getByteArrayExtra", String.class, byte[].class);
+                                    : Intent.class.getDeclaredMethod("getByteArrayListExtra",
+                                    String.class, byte[].class);
                         case "java.lang.Character[]":
                         case "char[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, char[].class)
-                                    : Intent.class.getDeclaredMethod("getCharArrayExtra", String.class, char[].class);
+                                    : Intent.class.getDeclaredMethod("getCharArrayListExtra",
+                                    String.class, char[].class);
                         case "java.lang.CharSequence[]":
                             return isGetRule
                                     ? Intent.class.getDeclaredMethod("putExtra", String.class, CharSequence[].class)
-                                    : Intent.class.getDeclaredMethod("getCharSequenceArrayExtra", String.class, CharSequence[].class);
+                                    : Intent.class.getDeclaredMethod("getCharSequenceArrayListExtra",
+                                    String.class, CharSequence[].class);
                         default:
                             break;
                     }
