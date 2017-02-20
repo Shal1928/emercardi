@@ -88,8 +88,12 @@ public class IntentBuilder {
             try {
                 Rule.Methods methods = entry.getValue();
                 String property = entry.getKey();
-//                FirstName only 2 methods for String
-                value = methods.getIntentMethod().invoke(intent, property, methods.getInstanceOfReturnType());
+
+                if(methods.getInstanceOfReturnType() instanceof String) {
+                    value = methods.getIntentMethod().invoke(intent, property);
+                } else {
+                    value = methods.getIntentMethod().invoke(intent, property, methods.getInstanceOfReturnType());
+                }
 
                 Iterator<Method> iterator = methods.getModelMethods().iterator();
                 if(iterator.hasNext()) {
